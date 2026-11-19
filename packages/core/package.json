@@ -2,17 +2,35 @@
   "name": "uinimate",
   "version": "0.0.0",
   "description": "A laboratory of animated UI components. Pure CSS and SVG motion for any stack — no dependencies.",
+  "license": "MIT",
   "type": "module",
-  "files": ["src"],
+  "files": [
+    "src",
+    "LICENSE"
+  ],
   "style": "./src/index.css",
   "exports": {
     ".": "./src/index.css",
     "./tokens.css": "./src/tokens.css",
-    "./specimens/*": "./src/specimens/*"
+    "./components/*": "./src/components/*"
   },
-  "sideEffects": ["*.css"],
-  "keywords": ["animation", "css", "svg", "ui", "motion", "components", "framework-agnostic"],
-  "repository": { "type": "git", "url": "git+ssh://git@github.com/RubenGullborg/ui-nimate.git", "directory": "packages/core" },
+  "sideEffects": [
+    "*.css"
+  ],
+  "keywords": [
+    "animation",
+    "css",
+    "svg",
+    "ui",
+    "motion",
+    "components",
+    "framework-agnostic"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/RubenGullborg/ui-nimate.git",
+    "directory": "packages/core"
+  },
   "scripts": {
     "build": "echo \"uinimate core ships source CSS — nothing to build\""
   }

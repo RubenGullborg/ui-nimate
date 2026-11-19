@@ -1,3 +1,4 @@
-/* Uinimate — everything in one file. Import single specimens instead to ship less. */
+/* Uinimate — everything in one file. Import single components instead to ship less. */
 @import "./tokens.css";
-@import "./specimens/u-001-morph/morph.css";
+@import "./components/morph/morph.css";
+@import "./components/burger/burger.css";

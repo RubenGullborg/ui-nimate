@@ -1,0 +1,100 @@
+/*
+  U-002 · Burger
+  Three lines that meet in the middle, then turn into a cross, an arrow or a minus.
+  State:    aria-expanded="true" (twin: data-state="open")
+  Variants: data-variant="cross" (default) | "arrow" | "minus" | "plus" | "twist"
+  Tune:     --u-burger-duration  whole change             (default 400ms)
+            --u-burger-ease      the turn at the end       (default spring)
+            --u-burger-size      icon size                 (default 24px; hit area stays ≥ 40px)
+            --u-burger-color     line colour               (default currentColor = your text colour)
+            --u-icon-stroke / --u-icon-cap / --u-icon-join (use miter with square ends for sharp tips)
+*/
+.u-burger {
+  --_d: var(--u-burger-duration, var(--u-dur-base, 400ms));
+  --_half: calc(var(--_d) * 0.45);
+  --_rest: calc(var(--_d) - var(--_half));
+  --_in: var(--u-burger-ease, var(--u-ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1)));
+  --_out: var(--u-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+  --_size: var(--u-burger-size, 24px);
+
+  display: inline-grid;
+  place-items: center;
+  inline-size: max(40px, var(--_size));
+  block-size: max(40px, var(--_size));
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--u-burger-color, currentColor);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.u-burger:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+.u-burger__svg {
+  transition: transform var(--_d) var(--_out);
+  inline-size: var(--_size);
+  block-size: var(--_size);
+  stroke-width: var(--u-icon-stroke, 2);
+  stroke-linecap: var(--u-icon-cap, round);
+  stroke-linejoin: var(--u-icon-join, round);
+  overflow: visible;
+}
+
+.u-burger__slide,
+.u-burger__line { transform-box: view-box; }
+.u-burger__line--top { transform-origin: 12px 6px; }
+.u-burger__line--mid { transform-origin: 12px 12px; }
+.u-burger__line--bot { transform-origin: 12px 18px; }
+
+/* Closing (back to three lines): undo the turn first, then slide apart. */
+.u-burger__line { transition: transform var(--_half) var(--_out); }
+.u-burger__slide { transition: transform var(--_rest) var(--_out) var(--_half); }
+.u-burger__line--mid { transition: transform var(--_rest) var(--_out) var(--_half), opacity var(--_rest) var(--_out) var(--_half); }
+
+/* Opening: slide together first, then turn with a spring. */
+.u-burger:is([aria-expanded="true"], [data-state="open"]) .u-burger__slide { transition: transform var(--_half) var(--_out); }
+.u-burger:is([aria-expanded="true"], [data-state="open"]) .u-burger__line { transition: transform var(--_rest) var(--_in) var(--_half); }
+.u-burger:is([aria-expanded="true"], [data-state="open"]) .u-burger__line--mid { transition: transform var(--_half) var(--_out), opacity calc(var(--_half) * 0.7) linear; }
+
+/* Every variant: the outer lines meet the middle one. */
+.u-burger:is([aria-expanded="true"], [data-state="open"]) .u-burger__slide--top { transform: translateY(6px); }
+.u-burger:is([aria-expanded="true"], [data-state="open"]) .u-burger__slide--bot { transform: translateY(-6px); }
+
+/* cross (default) */
+.u-burger:is([aria-expanded="true"], [data-state="open"]) .u-burger__line--top { transform: rotate(45deg); }
+.u-burger:is([aria-expanded="true"], [data-state="open"]) .u-burger__line--bot { transform: rotate(-45deg); }
+.u-burger:is([aria-expanded="true"], [data-state="open"]) .u-burger__line--mid { transform: scaleX(0.4); opacity: 0; }
+
+/* arrow: the outer lines fold from their left ends into an arrowhead; the middle line stays */
+.u-burger[data-variant="arrow"] .u-burger__line--top { transform-origin: 4px 6px; }
+.u-burger[data-variant="arrow"] .u-burger__line--bot { transform-origin: 4px 18px; }
+.u-burger[data-variant="arrow"]:is([aria-expanded="true"], [data-state="open"]) .u-burger__line--top { transform: rotate(-45deg) scaleX(0.56); }
+.u-burger[data-variant="arrow"]:is([aria-expanded="true"], [data-state="open"]) .u-burger__line--bot { transform: rotate(45deg) scaleX(0.56); }
+/* the shaft moves half a stroke right so its end hides under the tip with square, round or flat ends */
+.u-burger[data-variant="arrow"]:is([aria-expanded="true"], [data-state="open"]) .u-burger__line--mid { transform: translateX(calc(var(--u-icon-stroke, 2) * 0.5px)); opacity: 1; }
+
+/* The folded lines hand over to one joined arrowhead when the turn ends, so the tip is a clean
+   corner with every line end (separate lines can't share a join). Closing swaps back instantly. */
+.u-burger__head { opacity: 0; transition: opacity 0s linear; }
+.u-burger[data-variant="arrow"]:is([aria-expanded="true"], [data-state="open"]) .u-burger__head { opacity: 1; transition: opacity 0s linear var(--_d); }
+.u-burger[data-variant="arrow"]:is([aria-expanded="true"], [data-state="open"]) .u-burger__line--top,
+.u-burger[data-variant="arrow"]:is([aria-expanded="true"], [data-state="open"]) .u-burger__line--bot {
+  opacity: 0;
+  transition: transform var(--_rest) var(--_in) var(--_half), opacity 0s linear var(--_d);
+}
+
+/* plus: the top line stands up, the bottom one stays flat */
+.u-burger[data-variant="plus"]:is([aria-expanded="true"], [data-state="open"]) .u-burger__line--top { transform: rotate(90deg); }
+.u-burger[data-variant="plus"]:is([aria-expanded="true"], [data-state="open"]) .u-burger__line--bot { transform: none; }
+
+/* twist: a cross that spins half a turn on the way in */
+.u-burger[data-variant="twist"]:is([aria-expanded="true"], [data-state="open"]) .u-burger__svg { transform: rotate(180deg); transition: transform var(--_d) var(--_in); }
+
+/* minus: all three lines stack into one */
+.u-burger[data-variant="minus"]:is([aria-expanded="true"], [data-state="open"]) .u-burger__line--top,
+.u-burger[data-variant="minus"]:is([aria-expanded="true"], [data-state="open"]) .u-burger__line--bot { transform: none; }
+.u-burger[data-variant="minus"]:is([aria-expanded="true"], [data-state="open"]) .u-burger__line--mid { transform: none; opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .u-burger, .u-burger * { transition: none !important; }
+}

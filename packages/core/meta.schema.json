@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uinimate.dev/schema/meta.json",
+  "title": "Uinimate component meta",
+  "type": "object",
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "category",
+    "description",
+    "status",
+    "support",
+    "state",
+    "variants",
+    "tunables",
+    "a11y"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^U-\\d{3}$",
+      "description": "Catalogue number, e.g. U-002. Never reused."
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "category": {
+      "enum": [
+        "icon",
+        "control",
+        "loader",
+        "layout",
+        "text",
+        "background"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 160
+    },
+    "status": {
+      "enum": [
+        "experimental",
+        "stable"
+      ],
+      "description": "API maturity."
+    },
+    "support": {
+      "type": "object",
+      "required": [
+        "level"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "level": {
+          "enum": [
+            "baseline",
+            "experimental"
+          ],
+          "description": "Browser reach."
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "state": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "attr",
+            "values"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "attr": {
+              "type": "string",
+              "pattern": "^(aria-[a-z]+|data-state|:checked|:open)$"
+            },
+            "values": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 2
+            },
+            "fallback": {
+              "const": "data-state"
+            },
+            "fallbackValues": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 2
+            }
+          }
+        }
+      ]
+    },
+    "variants": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "label"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tunables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "prop",
+          "default",
+          "type"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "prop": {
+            "type": "string",
+            "pattern": "^--u-[a-z0-9-]+$"
+          },
+          "label": {
+            "type": "string"
+          },
+          "default": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "time",
+              "length",
+              "number",
+              "color",
+              "easing",
+              "keyword"
+            ]
+          },
+          "min": {
+            "type": "number"
+          },
+          "max": {
+            "type": "number"
+          },
+          "step": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "value",
+                    "label"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "One-line explanation shown under the control."
+                    },
+                    "also": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Other tunables this option sets, e.g. a matching line join."
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "a11y": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

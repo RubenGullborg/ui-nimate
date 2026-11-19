@@ -6,9 +6,12 @@
   "scripts": {
     "dev": "pnpm --filter @uinimate/site dev",
     "build": "pnpm -r build",
-    "preview": "pnpm --filter @uinimate/site preview"
+    "preview": "pnpm --filter @uinimate/site preview",
+    "new": "node scripts/new-component.mjs",
+    "check": "node scripts/check.mjs"
   },
   "engines": {
     "node": ">=20"
-  }
+  },
+  "license": "MIT"
 }

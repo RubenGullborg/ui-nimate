@@ -1,0 +1,115 @@
+{
+  "$schema": "../../../meta.schema.json",
+  "id": "U-002",
+  "slug": "burger",
+  "name": "Burger",
+  "category": "icon",
+  "description": "Three lines meet in the middle, then become a cross, arrow, minus, plus or a twisting cross. Closing plays it in reverse.",
+  "status": "experimental",
+  "support": {
+    "level": "baseline",
+    "notes": ""
+  },
+  "state": {
+    "attr": "aria-expanded",
+    "values": [
+      "false",
+      "true"
+    ],
+    "fallback": "data-state",
+    "fallbackValues": [
+      "closed",
+      "open"
+    ]
+  },
+  "variants": [
+    {
+      "name": "cross",
+      "label": "Cross"
+    },
+    {
+      "name": "arrow",
+      "label": "Arrow"
+    },
+    {
+      "name": "minus",
+      "label": "Minus"
+    },
+    {
+      "name": "plus",
+      "label": "Plus"
+    },
+    {
+      "name": "twist",
+      "label": "Twist"
+    }
+  ],
+  "tunables": [
+    {
+      "prop": "--u-burger-duration",
+      "label": "Duration",
+      "default": "400ms",
+      "type": "time",
+      "min": 120,
+      "max": 1400,
+      "step": 20,
+      "unit": "ms"
+    },
+    {
+      "prop": "--u-burger-size",
+      "label": "Size",
+      "default": "24px",
+      "type": "length",
+      "min": 16,
+      "max": 96,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "prop": "--u-icon-stroke",
+      "label": "Stroke",
+      "default": "2",
+      "type": "number",
+      "min": 1,
+      "max": 3,
+      "step": 0.25
+    },
+    {
+      "prop": "--u-icon-cap",
+      "label": "Line ends",
+      "default": "round",
+      "type": "keyword",
+      "options": [
+        {
+          "value": "round",
+          "label": "Round",
+          "note": "Rounded ends and corners.",
+          "also": {
+            "--u-icon-join": "round"
+          }
+        },
+        {
+          "value": "square",
+          "label": "Square",
+          "note": "Ends extend half a stroke past the line; sharp corners.",
+          "also": {
+            "--u-icon-join": "miter"
+          }
+        }
+      ]
+    },
+    {
+      "prop": "--u-burger-color",
+      "label": "Colour",
+      "default": "currentColor",
+      "type": "color"
+    }
+  ],
+  "a11y": "Use on a <button> with aria-label and aria-controls pointing at the menu. Toggle aria-expanded when the menu opens and closes.",
+  "tags": [
+    "menu",
+    "navigation",
+    "hamburger",
+    "mobile"
+  ]
+}

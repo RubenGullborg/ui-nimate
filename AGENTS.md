@@ -11,17 +11,16 @@ Before you design, write copy, animate or review anything user-facing, read **`s
 ```
 packages/core/     the library (npm: uinimate) — plain CSS + SVG, no runtime dependencies
   src/tokens.css   design tokens (--u-*)
-  src/specimens/   one folder per specimen: u-###-name/{name}.css + README.md
+  src/components/  one folder per component: <slug>.html, <slug>.css, meta.json, README.md
+  meta.schema.json the meta.json contract
 apps/site/         Astro site (docs, playground, hero film). Brand assets synced from brand/ at dev/build.
 brand/             brand kit: tokens, logo, icon, patterns, brand guide, film (+ editable source)
-skills/            agent skills (uinimate-brand). Claude Code loads it via .claude/skills/
+skills/            agent skills (uinimate-brand, uinimate-components). Claude Code loads them via .claude/skills/
 ```
 
 ## Rules for library code (`packages/core`)
 
-- No runtime dependencies. CSS and SVG first; tiny vanilla TS only when CSS can't do it.
-- Every specimen: catalogue number (`U-###`), tunable CSS custom properties prefixed `--u-<name>-`, a still state, `prefers-reduced-motion` support, no layout shift (animate transform, opacity, clip-path).
-- Each specimen folder has a README with usage, a tuning table and a "Manners" section.
+Read **`skills/uinimate-components/SKILL.md`** before creating or changing a component. In short: no runtime dependencies; state comes from an ARIA attribute with a `data-state` twin; variants via `data-variant`; tunables `--u-<slug>-*` read with fallbacks, never declared; reduced motion, visible focus, no layout shift. Scaffold with `pnpm new`, validate with `pnpm check`.
 
 ## Commands
 
@@ -29,4 +28,6 @@ skills/            agent skills (uinimate-brand). Claude Code loads it via .clau
 pnpm install
 pnpm dev      # site at http://localhost:4321
 pnpm build
+pnpm new <slug> "<Name>"   # scaffold a component
+pnpm check                 # validate components against the contract
 ```

@@ -1,0 +1,82 @@
+---
+import Base from "../../layouts/Base.astro";
+import { components } from "../../lib/components";
+const next = `U-${String(Math.max(...components.map((c) => Number(c.id.slice(2)))) + 1).padStart(3, "0")}`;
+---
+
+<Base title="Components — Uinimate" description="Animated UI components in pure CSS and SVG. Copy, tune and use them in any stack.">
+  <section class="wrap page">
+    <div class="head">
+      <span class="label">Components</span>
+      <h1 class="display h1">The collection</h1>
+      <p class="lede">Each component is plain HTML and CSS, animated by one attribute your code already sets. Click any preview to try it.</p>
+    </div>
+
+    <ul class="grid">
+      {components.map((c) => (
+        <li class="card">
+          <div class="stage" data-demo data-attr={c.state?.attr ?? ""} data-values={JSON.stringify(c.state?.values ?? [])}>
+            <div class="zoom" set:html={c.html} />
+          </div>
+          <a class="meta" href={`/components/${c.slug}`}>
+            <span class="spec">Specimen {c.id} · {c.category}</span>
+            <h2>{c.name}</h2>
+            <p>{c.description}</p>
+            <span class="tags">
+              {c.variants.length > 1 && <span class="chip" style="background:var(--u-ring-lilac)">{c.variants.length} variants</span>}
+              {c.state && <span class="chip" style="background:var(--u-ring-sky)">{c.state.attr}</span>}
+              {c.support.level === "experimental" && <span class="chip" style="background:var(--u-ring-coral)">experimental CSS</span>}
+              <span class="chip" style={`background:var(${c.size.color})`}>{c.size.kb} kB · {c.size.tier}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+      <li class="card card--soon" aria-label="More components coming soon">
+        <div class="stage stage--soon"><span class="spec">[ in the lab ]</span></div>
+        <div class="meta">
+          <span class="spec">Specimen {next}</span>
+          <h2>Coming soon</h2>
+          <p>Theme toggle and disclosure are next on the bench.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+</Base>
+
+<script>
+  // Clicking a preview flips its state attribute, exactly like a user's own code would.
+  document.querySelectorAll<HTMLElement>("[data-demo]").forEach((stage) => {
+    const attr = stage.dataset.attr;
+    const values: string[] = JSON.parse(stage.dataset.values || "[]");
+    const host = stage.querySelector<HTMLElement>(".zoom > *");
+    if (!attr || !host || values.length < 2) return;
+    host.setAttribute("tabindex", "-1");
+    stage.addEventListener("click", () => {
+      const now = host.getAttribute(attr);
+      host.setAttribute(attr, now === values[1] ? values[0] : values[1]);
+    });
+  });
+</script>
+
+<style>
+  .page { padding-block: 72px 0; display: flex; flex-direction: column; gap: 48px; }
+  .head { display: flex; flex-direction: column; gap: 14px; }
+  .h1 { font-size: clamp(44px, 6vw, 80px); }
+  .lede { font-size: 18px; color: var(--muted); }
+  .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 24px; }
+  .card { border: 1.5px solid var(--fg); display: flex; flex-direction: column; background: var(--bg); }
+  .stage {
+    aspect-ratio: 4 / 3; display: grid; place-items: center; cursor: pointer;
+    color: var(--u-chalk); background: var(--u-blueprint) url(/brand/patterns/blueprint-grid.svg);
+    border-bottom: 1.5px solid var(--fg);
+  }
+  .zoom { scale: 2; display: grid; place-items: center; }
+  .stage--soon { background: var(--surface); color: var(--muted); cursor: default; }
+  .meta { display: flex; flex-direction: column; gap: 8px; padding: 20px; text-decoration: none; flex: 1; }
+  .meta:hover h2 { text-decoration: underline; text-underline-offset: 6px; }
+  .meta .spec { color: var(--muted); }
+  .meta h2 { margin: 0; font: 500 30px/1.1 var(--display); }
+  .meta p { color: var(--muted); font-size: 15px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 8px; }
+  .card--soon { border-style: dashed; }
+</style>

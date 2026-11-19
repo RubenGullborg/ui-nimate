@@ -8,25 +8,26 @@
 
 `[ 0 deps ]` `[ CSS · SVG ]` `[ any framework ]`
 
-> Pronounced "you-eye-nimate". Early days: the first specimen is in, many more are on the bench.
+> Pronounced "you-eye-nimate". Early days: the first components are in, many more are on the bench.
 
-## Specimens
+## Components
 
 | No. | Name | What it does |
 |---|---|---|
-| U-001 | [Morph](packages/core/src/specimens/u-001-morph) | One shape morphs square → triangle → hexagon → circle with a spring hop |
+| U-001 | [Morph](packages/core/src/components/morph) | One shape morphs square → triangle → hexagon → circle with a spring hop |
+| U-002 | [Burger](packages/core/src/components/burger) | Three lines meet, then become a cross, arrow, minus, plus or a twisting cross |
 
 ## Use
 
 ```html
-<link rel="stylesheet" href="uinimate/specimens/u-001-morph/morph.css" />
-<span class="u-morph" role="img" aria-label="Loading"></span>
+<link rel="stylesheet" href="uinimate/components/burger/burger.css" />
+<button class="u-burger" aria-expanded="false" aria-label="Menu">…</button>
 ```
 
-Tune it with CSS custom properties:
+Your code flips `aria-expanded`; the CSS animates it. Tune with custom properties:
 
 ```css
-.my-loader { --u-morph-size: 24px; --u-morph-duration: 2s; }
+.site-header { --u-burger-duration: 500ms; --u-icon-cap: round; }
 ```
 
 Works in React, Vue, Svelte, Astro, plain HTML, Webflow and Shopify. If it renders HTML, it runs Uinimate.
@@ -50,8 +51,12 @@ skills          agent skills (brand guidelines for AI tools)
 
 ```bash
 pnpm install
-pnpm dev        # http://localhost:4321
+pnpm dev                      # http://localhost:4321
+pnpm new <slug> "<Name>"     # scaffold a component that follows the contract
+pnpm check                    # validate every component
 ```
+
+How components are built: [`skills/uinimate-components/SKILL.md`](skills/uinimate-components/SKILL.md).
 
 ## Brand
 

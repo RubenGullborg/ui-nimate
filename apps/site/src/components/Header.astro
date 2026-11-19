@@ -1,5 +1,10 @@
 ---
 import Logo from "./Logo.astro";
+import burgerSource from "../../../../packages/core/src/components/burger/burger.html?raw";
+// Dogfooding: the header uses the library's own Burger markup.
+const burger = burgerSource
+  .replace('class="u-burger"', 'class="u-burger menu-btn"')
+  .replace('aria-controls="menu"', 'aria-controls="site-nav"');
 const github = "https://github.com/RubenGullborg/ui-nimate";
 ---
 
@@ -10,10 +15,7 @@ const github = "https://github.com/RubenGullborg/ui-nimate";
       <img class="brand-icon" src="/brand/icon/uinimate-icon.svg" alt="" width="40" height="40" />
     </a>
 
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
-      <span class="visually-hidden">Menu</span>
-      <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
-    </button>
+    <Fragment set:html={burger} />
 
     <nav id="site-nav" class="nav" aria-label="Main">
       <a class="nav-link" href="/components">Components</a>
@@ -74,16 +76,12 @@ const github = "https://github.com/RubenGullborg/ui-nimate";
   .theme-dot { width: 12px; height: 12px; background: var(--u-blueprint); border: 1px solid var(--fg); }
   .theme[aria-pressed="true"] .theme-dot { background: var(--u-paper); }
 
-  .menu-btn { display: none; width: 44px; height: 44px; background: none; border: 1px solid var(--line); color: var(--fg); cursor: pointer; place-items: center; }
-  .menu-icon { display: grid; gap: 6px; width: 20px; }
-  .menu-icon i { display: block; height: 2px; background: currentColor; transition: transform var(--u-dur-quick) var(--u-ease-spring); }
-  .menu-btn[aria-expanded="true"] .menu-icon i:first-child { transform: translateY(4px) rotate(45deg); }
-  .menu-btn[aria-expanded="true"] .menu-icon i:last-child { transform: translateY(-4px) rotate(-45deg); }
+  :global(.menu-btn) { display: none; border: 1px solid var(--line); width: 44px; height: 44px; }
 
   @media (max-width: 720px) {
     .brand-full { display: none; }
     .brand-icon { display: block; }
-    .menu-btn { display: grid; }
+    :global(.menu-btn) { display: grid; }
     .nav {
       display: none; position: absolute; inset: 100% 0 auto 0;
       flex-direction: column; align-items: stretch; gap: 0;

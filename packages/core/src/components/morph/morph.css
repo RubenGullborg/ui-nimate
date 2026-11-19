@@ -3,7 +3,7 @@
   A single shape that morphs square → triangle → hexagon → circle with a spring.
   The same motion as the dots on the living-i logo. Pure CSS, no JavaScript.
 
-  Markup:   <span class="u-morph" role="img" aria-label="Loading"></span>
+  Markup:   see morph.html
   Tune:     --u-morph-size      size of the shape                 (default 48px)
             --u-morph-duration  one full cycle                    (default 3.2s)
             --u-morph-ease      easing of each change             (default spring)
@@ -12,45 +12,46 @@
   Still:    add .u-morph--still, or the user's reduced-motion setting stops it on the square.
 */
 .u-morph {
-  --u-morph-size: 48px;
-  --u-morph-duration: 3.2s;
-  --u-morph-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --u-morph-lift: 0.35;
-  --u-morph-c1: #4494c8;
-  --u-morph-c2: #c67164;
-  --u-morph-c3: #579f68;
-  --u-morph-c4: #977cc5;
+  /* Public tunables are read here with fallbacks (user value → brand token → default), never declared. */
+  --_size: var(--u-morph-size, 48px);
+  --_duration: var(--u-morph-duration, 3.2s);
+  --_ease: var(--u-morph-ease, var(--u-ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1)));
+  --_lift: var(--u-morph-lift, 0.35);
+  --_c1: var(--u-morph-c1, #4494c8);
+  --_c2: var(--u-morph-c2, #c67164);
+  --_c3: var(--u-morph-c3, #579f68);
+  --_c4: var(--u-morph-c4, #977cc5);
 
   display: inline-block;
-  inline-size: var(--u-morph-size);
-  block-size: var(--u-morph-size);
-  background: var(--u-morph-c1);
+  inline-size: var(--_size);
+  block-size: var(--_size);
+  background: var(--_c1);
   clip-path: polygon(50% 0%, 78.9% 0%, 100% 21.1%, 100% 50%, 100% 78.9%, 78.9% 100%, 50% 100%, 21.1% 100%, 0% 78.9%, 0% 50%, 0% 21.1%, 21.1% 0%);
-  animation: u-morph var(--u-morph-duration) infinite;
-  animation-timing-function: var(--u-morph-ease);
+  animation: u-morph var(--_duration) infinite;
+  animation-timing-function: var(--_ease);
 }
 
 /* All four shapes use 12 points, so the browser can interpolate between them. */
 @keyframes u-morph {
   0%, 16% {
     clip-path: polygon(50% 0%, 78.9% 0%, 100% 21.1%, 100% 50%, 100% 78.9%, 78.9% 100%, 50% 100%, 21.1% 100%, 0% 78.9%, 0% 50%, 0% 21.1%, 21.1% 0%);
-    translate: 0 0; rotate: 0deg; background: var(--u-morph-c1);
+    translate: 0 0; rotate: 0deg; background: var(--_c1);
   }
   24%, 40% {
     clip-path: polygon(50% 0%, 63.6% 26.5%, 69.8% 38.6%, 75.6% 50%, 86.4% 71%, 77.4% 97.5%, 50% 97.5%, 22.6% 97.5%, 13.6% 71%, 24.4% 50%, 30.2% 38.6%, 36.4% 26.5%);
-    translate: 0 calc(var(--u-morph-size) * var(--u-morph-lift) * -1); rotate: 0deg; background: var(--u-morph-c2);
+    translate: 0 calc(var(--_size) * var(--_lift) * -1); rotate: 0deg; background: var(--_c2);
   }
   48%, 64% {
     clip-path: polygon(50% 6.7%, 75% 6.7%, 87.5% 28.3%, 100% 50%, 87.5% 71.7%, 75% 93.3%, 50% 93.3%, 25% 93.3%, 12.5% 71.7%, 0% 50%, 12.5% 28.3%, 25% 6.7%);
-    translate: 0 0; rotate: 30deg; background: var(--u-morph-c3);
+    translate: 0 0; rotate: 30deg; background: var(--_c3);
   }
   72%, 88% {
     clip-path: polygon(50% 0%, 75% 6.7%, 93.3% 25%, 100% 50%, 93.3% 75%, 75% 93.3%, 50% 100%, 25% 93.3%, 6.7% 75%, 0% 50%, 6.7% 25%, 25% 6.7%);
-    translate: 0 calc(var(--u-morph-size) * var(--u-morph-lift) * -0.8); rotate: 30deg; background: var(--u-morph-c4);
+    translate: 0 calc(var(--_size) * var(--_lift) * -0.8); rotate: 30deg; background: var(--_c4);
   }
   96%, 100% {
     clip-path: polygon(50% 0%, 78.9% 0%, 100% 21.1%, 100% 50%, 100% 78.9%, 78.9% 100%, 50% 100%, 21.1% 100%, 0% 78.9%, 0% 50%, 0% 21.1%, 21.1% 0%);
-    translate: 0 0; rotate: 90deg; background: var(--u-morph-c1);
+    translate: 0 0; rotate: 90deg; background: var(--_c1);
   }
 }
 

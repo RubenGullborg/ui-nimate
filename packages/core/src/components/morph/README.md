@@ -7,7 +7,7 @@ One shape that morphs **square → triangle → hexagon → circle**, hopping on
 ## Use
 
 ```html
-<link rel="stylesheet" href="uinimate/specimens/u-001-morph/morph.css" />
+<link rel="stylesheet" href="uinimate/components/morph/morph.css" />
 
 <span class="u-morph" role="img" aria-label="Loading"></span>
 ```
