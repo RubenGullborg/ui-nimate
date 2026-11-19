@@ -93,10 +93,16 @@ const values = [
   .hero { --field: url(/brand/patterns/shape-field-paper.svg); border-bottom: 1px solid var(--line); }
   :global([data-theme="dark"]) .hero { --field: url(/brand/patterns/shape-field-blueprint.svg); }
   .field {
+    position: relative; overflow: hidden; isolation: isolate;
     min-height: min(78vh, 760px);
     display: grid; place-items: center;
-    background: var(--bg) var(--field) center / cover no-repeat;
+    background: var(--bg);
     padding: 72px 20px;
+  }
+  /* The pattern is drawn taller than the hero, so its corner labels sit outside the visible area. */
+  .field::before {
+    content: ""; position: absolute; inset: -12% 0; z-index: -1;
+    background: var(--field) center / cover no-repeat;
   }
   .hero-copy {
     display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;

@@ -120,7 +120,8 @@ ul.rules li::before{content:attr(data-k);font:12px/1.7 var(--mono);color:var(--m
 .curve text{font-family:var(--mono)}
 .lane{position:relative;height:30px;margin:0 16px 16px;border-top:1px dashed var(--line)}
 .lane i{position:absolute;top:8px;left:0;width:16px;height:16px;background:var(--accent);animation:lane 2.2s infinite alternate}
-@keyframes lane{to{left:calc(100% - 16px)}}
+/* the dot travels 88 % of the lane, so a spring's ~10 % overshoot still lands inside the box */
+@keyframes lane{to{left:calc(88% - 16px)}}
 table{border-collapse:collapse;width:100%;font-size:14px}
 .tbl{overflow-x:auto}
 th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
@@ -356,30 +357,7 @@ td code{font:12px var(--mono)}
   </div>
 </section>
 
-<!-- X FILES -->
-<section class="plate" id="files">
-  <div class="rail"><span class="label">Plate X</span><span class="spec">Files</span></div>
-  <div class="content">
-    <h2>The kit</h2>
-<pre class="files">uinimate-brand/
-├── brand-guide.html          this page
-├── tokens/
-│   ├── tokens.css            CSS custom properties (--u-*)
-│   └── tokens.json           same values for any tool or model
-├── logo/
-│   └── uinimate-logo.css     living-i logo, HTML + CSS
-├── icon/
-│   ├── uinimate-icon.svg                   still · paper
-│   ├── uinimate-icon-blueprint.svg         still · blueprint
-│   ├── uinimate-icon-animated.svg          animated · paper
-│   ├── uinimate-icon-animated-blueprint.svg
-│   ├── uinimate-app-icon.svg               512 px · blueprint
-│   └── uinimate-app-icon-paper.svg         512 px · paper
-└── patterns/
-    ├── shape-field-paper.svg  shape-field-blueprint.svg
-    └── blueprint-grid.svg  paper-grid.svg  dot-grid.svg</pre>
-  </div>
-</section>
+
 
 </div>
 

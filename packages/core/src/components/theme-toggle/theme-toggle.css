@@ -1,0 +1,145 @@
+/*
+  U-002 · Theme toggle
+  Sun to moon. Detached rays pull in one by one, the sun winds up and the moon draws in with a spring.
+  State:    aria-pressed="true" = dark mode on (twin: data-state="on")
+  Variants: data-variant="draw" (default) | "spin" | "rise" | "flip" | "orbit" | "swap"
+  Tune:     --u-theme-toggle-duration  whole change            (default 800ms)
+            --u-theme-toggle-size      icon size               (default 24px; hit area stays ≥ 40px)
+            --u-theme-toggle-color     line colour             (default currentColor)
+            --u-icon-stroke (default 1.5 here) / --u-icon-cap / --u-icon-join
+*/
+.u-theme-toggle {
+  --_d: var(--u-theme-toggle-duration, 800ms);
+  --_in: var(--u-ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
+  --_out: var(--u-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+  --_io: var(--u-ease-in-out, cubic-bezier(0.65, 0, 0.35, 1));
+  --_size: var(--u-theme-toggle-size, 24px);
+
+  display: inline-grid;
+  place-items: center;
+  inline-size: max(40px, var(--_size));
+  block-size: max(40px, var(--_size));
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--u-theme-toggle-color, currentColor);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.u-theme-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+.u-theme-toggle__svg {
+  inline-size: var(--_size);
+  block-size: var(--_size);
+  stroke-width: var(--u-icon-stroke, 1.5);
+  stroke-linecap: var(--u-icon-cap, round);
+  stroke-linejoin: var(--u-icon-join, round);
+  overflow: visible;
+  transition: transform var(--_d) var(--_out);
+}
+.u-theme-toggle__sun,
+.u-theme-toggle__night,
+.u-theme-toggle__core,
+.u-theme-toggle__moon { transform-box: view-box; transform-origin: 12px 12px; }
+.u-theme-toggle__ray,
+.u-theme-toggle__core,
+.u-theme-toggle__moon { stroke-dasharray: 1 1; }
+
+/* ---------- draw (default) ---------- */
+/* Back to light: the moon undraws, then the sun draws back, then the rays grow out one by one. */
+.u-theme-toggle__moon {
+  stroke-dashoffset: 1; opacity: 0; transform: rotate(-40deg);
+  transition: stroke-dashoffset calc(var(--_d) * 0.3) var(--_out), transform calc(var(--_d) * 0.3) var(--_out), opacity 0s linear calc(var(--_d) * 0.3);
+}
+.u-theme-toggle__core {
+  stroke-dashoffset: 0; opacity: 1; transform: rotate(0deg);
+  transition: stroke-dashoffset calc(var(--_d) * 0.35) var(--_out) calc(var(--_d) * 0.3), transform calc(var(--_d) * 0.45) var(--_in) calc(var(--_d) * 0.3), opacity 0s linear calc(var(--_d) * 0.3);
+}
+.u-theme-toggle__ray {
+  stroke-dashoffset: 0; opacity: 1;
+  transition: stroke-dashoffset calc(var(--_d) * 0.25) var(--_out) calc(var(--_d) * 0.55 + var(--i, 0) * 20ms), opacity 0s linear calc(var(--_d) * 0.55 + var(--i, 0) * 20ms);
+}
+
+/* Into dark: rays pull in, the sun winds up and is fully gone before the moon starts drawing. */
+.u-theme-toggle:is([aria-pressed="true"], [data-state="on"]) .u-theme-toggle__ray {
+  stroke-dashoffset: 1; opacity: 0;
+  transition: stroke-dashoffset calc(var(--_d) * 0.22) var(--_out) calc(var(--i, 0) * 20ms), opacity 0s linear calc(var(--_d) * 0.22 + var(--i, 0) * 20ms);
+}
+.u-theme-toggle:is([aria-pressed="true"], [data-state="on"]) .u-theme-toggle__core {
+  stroke-dashoffset: -1; opacity: 0; transform: rotate(-90deg);
+  transition: stroke-dashoffset calc(var(--_d) * 0.3) var(--_out) calc(var(--_d) * 0.12), transform calc(var(--_d) * 0.3) var(--_out) calc(var(--_d) * 0.12), opacity 0s linear calc(var(--_d) * 0.42);
+}
+.u-theme-toggle:is([aria-pressed="true"], [data-state="on"]) .u-theme-toggle__moon {
+  stroke-dashoffset: 0; opacity: 1; transform: rotate(0deg);
+  transition: stroke-dashoffset calc(var(--_d) * 0.42) var(--_out) calc(var(--_d) * 0.48), transform calc(var(--_d) * 0.52) var(--_in) calc(var(--_d) * 0.48), opacity 0s linear calc(var(--_d) * 0.48);
+}
+
+/* ---------- spin: the same change inside one full turn ---------- */
+.u-theme-toggle[data-variant="spin"]:is([aria-pressed="true"], [data-state="on"]) .u-theme-toggle__svg {
+  transform: rotate(360deg);
+  transition: transform var(--_d) var(--_in);
+}
+
+/* ---------- variants that move whole drawings instead of drawing them ---------- */
+.u-theme-toggle:is([data-variant="rise"], [data-variant="flip"], [data-variant="orbit"], [data-variant="swap"]) :is(.u-theme-toggle__ray, .u-theme-toggle__core, .u-theme-toggle__moon) {
+  stroke-dashoffset: 0; opacity: 1; transform: none; transition: none;
+}
+.u-theme-toggle:is([data-variant="rise"], [data-variant="orbit"]) .u-theme-toggle__svg { overflow: hidden; }
+
+/* rise: the sun sets below the edge, the moon drops in from above */
+.u-theme-toggle[data-variant="rise"] .u-theme-toggle__sun {
+  transform: translateY(0); opacity: 1;
+  transition: transform calc(var(--_d) * 0.6) var(--_in) calc(var(--_d) * 0.3), opacity calc(var(--_d) * 0.3) linear calc(var(--_d) * 0.3);
+}
+.u-theme-toggle[data-variant="rise"] .u-theme-toggle__night {
+  transform: translateY(-14px); opacity: 0;
+  transition: transform calc(var(--_d) * 0.4) var(--_out), opacity calc(var(--_d) * 0.3) linear;
+}
+.u-theme-toggle[data-variant="rise"]:is([aria-pressed="true"], [data-state="on"]) .u-theme-toggle__sun {
+  transform: translateY(14px); opacity: 0;
+  transition: transform calc(var(--_d) * 0.45) var(--_out), opacity calc(var(--_d) * 0.3) linear calc(var(--_d) * 0.15);
+}
+.u-theme-toggle[data-variant="rise"]:is([aria-pressed="true"], [data-state="on"]) .u-theme-toggle__night {
+  transform: translateY(0); opacity: 1;
+  transition: transform calc(var(--_d) * 0.6) var(--_in) calc(var(--_d) * 0.3), opacity calc(var(--_d) * 0.25) linear calc(var(--_d) * 0.3);
+}
+
+/* flip: a coin flip, sun on the front, moon on the back */
+.u-theme-toggle[data-variant="flip"] .u-theme-toggle__svg {
+  transform: perspective(80px) rotateY(0deg);
+  transition: transform var(--_d) var(--_io);
+}
+.u-theme-toggle[data-variant="flip"] .u-theme-toggle__night { transform: scaleX(-1); opacity: 0; transition: opacity 0s linear calc(var(--_d) * 0.5); }
+.u-theme-toggle[data-variant="flip"] .u-theme-toggle__sun { opacity: 1; transition: opacity 0s linear calc(var(--_d) * 0.5); }
+.u-theme-toggle[data-variant="flip"]:is([aria-pressed="true"], [data-state="on"]) .u-theme-toggle__svg { transform: perspective(80px) rotateY(180deg); }
+.u-theme-toggle[data-variant="flip"]:is([aria-pressed="true"], [data-state="on"]) .u-theme-toggle__sun { opacity: 0; }
+.u-theme-toggle[data-variant="flip"]:is([aria-pressed="true"], [data-state="on"]) .u-theme-toggle__night { opacity: 1; }
+
+/* orbit: the sun swings away along an arc and the moon swings in behind it */
+.u-theme-toggle[data-variant="orbit"] :is(.u-theme-toggle__sun, .u-theme-toggle__night) { transform-origin: 12px 34px; }
+.u-theme-toggle[data-variant="orbit"] .u-theme-toggle__sun { transform: rotate(0deg); transition: transform var(--_d) var(--_in); }
+.u-theme-toggle[data-variant="orbit"] .u-theme-toggle__night { transform: rotate(80deg); transition: transform var(--_d) var(--_in); }
+.u-theme-toggle[data-variant="orbit"]:is([aria-pressed="true"], [data-state="on"]) .u-theme-toggle__sun { transform: rotate(-80deg); }
+.u-theme-toggle[data-variant="orbit"]:is([aria-pressed="true"], [data-state="on"]) .u-theme-toggle__night { transform: rotate(0deg); }
+
+/* swap: the sun shrinks and turns away, the moon pops in with a spring */
+.u-theme-toggle[data-variant="swap"] .u-theme-toggle__sun {
+  transform: scale(1) rotate(0deg); opacity: 1;
+  transition: transform calc(var(--_d) * 0.6) var(--_in) calc(var(--_d) * 0.25), opacity calc(var(--_d) * 0.3) linear calc(var(--_d) * 0.25);
+}
+.u-theme-toggle[data-variant="swap"] .u-theme-toggle__night {
+  transform: scale(0.3) rotate(-90deg); opacity: 0;
+  transition: transform calc(var(--_d) * 0.35) var(--_out), opacity calc(var(--_d) * 0.25) linear;
+}
+.u-theme-toggle[data-variant="swap"]:is([aria-pressed="true"], [data-state="on"]) .u-theme-toggle__sun {
+  transform: scale(0.3) rotate(90deg); opacity: 0;
+  transition: transform calc(var(--_d) * 0.35) var(--_out), opacity calc(var(--_d) * 0.25) linear;
+}
+.u-theme-toggle[data-variant="swap"]:is([aria-pressed="true"], [data-state="on"]) .u-theme-toggle__night {
+  transform: scale(1) rotate(0deg); opacity: 1;
+  transition: transform calc(var(--_d) * 0.6) var(--_in) calc(var(--_d) * 0.25), opacity calc(var(--_d) * 0.3) linear calc(var(--_d) * 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .u-theme-toggle, .u-theme-toggle * { transition: none !important; }
+}

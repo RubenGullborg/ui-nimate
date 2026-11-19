@@ -1,0 +1,135 @@
+/*
+  U-003 · Disclosure
+  Collapsible sections. The panel opens to its natural height and the content slides in after it;
+  the icon turns from plus to minus, plus to cross, or flips a chevron.
+  State:    aria-expanded="true" on each trigger (twin: data-state="open")
+  Variants: data-variant="plus" (default) | "cross" | "chevron"
+  Options:  data-icon="start"           icon on the left
+            data-title="lift" | "slide" the title moves when its section opens
+            Put variants and options on one .u-disclosure, or on .u-disclosure-group to style a whole stack.
+  Tune:     --u-disclosure-duration        open/close                 (default 360ms)
+            --u-disclosure-size            icon size                  (default 20px)
+            --u-disclosure-color           text, icon and dividers    (default currentColor)
+            --u-disclosure-padding         space above/below a title  (default 14px)
+            --u-disclosure-divider         divider thickness          (default 1px; 0 hides it)
+            --u-disclosure-divider-opacity divider strength           (default 0.28)
+            --u-icon-stroke / --u-icon-cap / --u-icon-join   (the icon only)
+  Height:   grid-template-rows 0fr → 1fr, so nothing measures heights in JavaScript.
+*/
+.u-disclosure-group,
+.u-disclosure {
+  --_d: var(--u-disclosure-duration, 360ms);
+  --_in: var(--u-ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
+  --_out: var(--u-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+  --_size: var(--u-disclosure-size, 20px);
+  --_rule: var(--u-disclosure-divider, 1px) solid color-mix(in srgb, currentColor calc(var(--u-disclosure-divider-opacity, 0.28) * 100%), transparent);
+  color: var(--u-disclosure-color, currentColor);
+}
+.u-disclosure-group { inline-size: 100%; border-block-start: var(--_rule); }
+.u-disclosure { inline-size: 100%; border-block-end: var(--_rule); }
+
+.u-disclosure__trigger {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  inline-size: 100%;
+  min-block-size: 48px;
+  padding: var(--u-disclosure-padding, 14px) 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.u-disclosure__trigger:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.u-disclosure__label {
+  flex: 1;
+  transform-origin: left center;
+  transition: transform var(--_d) var(--_out), opacity var(--_d) var(--_out);
+}
+
+.u-disclosure__icon {
+  flex: none;
+  inline-size: var(--_size);
+  block-size: var(--_size);
+  stroke-width: var(--u-icon-stroke, 2);
+  stroke-linecap: var(--u-icon-cap, round);
+  stroke-linejoin: var(--u-icon-join, round);
+  overflow: visible;
+}
+.u-disclosure__bar,
+.u-disclosure__chev {
+  transform-box: view-box;
+  transform-origin: 12px 12px;
+  transition: transform var(--_d) var(--_out), opacity calc(var(--_d) * 0.5) var(--_out);
+}
+.u-disclosure__chev { opacity: 0; }
+
+/* ---------- the panel ---------- */
+.u-disclosure__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;                     /* closed content can't be tabbed into */
+  transition: grid-template-rows var(--_d) var(--_out), visibility 0s linear var(--_d);
+}
+.u-disclosure__inner { min-block-size: 0; overflow: hidden; }
+.u-disclosure__inner > * {
+  opacity: 0;
+  translate: 0 -6px;
+  transition: opacity calc(var(--_d) * 0.4) var(--_out), translate calc(var(--_d) * 0.4) var(--_out);
+}
+.u-disclosure__inner > :first-child { margin-block-start: 0; }
+.u-disclosure__inner > :last-child { margin-block-end: var(--u-disclosure-padding, 14px); }
+
+.u-disclosure__trigger:is([aria-expanded="true"], [data-state="open"]) + .u-disclosure__panel {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows var(--_d) var(--_out), visibility 0s linear;
+}
+.u-disclosure__trigger:is([aria-expanded="true"], [data-state="open"]) + .u-disclosure__panel .u-disclosure__inner > * {
+  opacity: 1;
+  translate: 0 0;
+  transition: opacity calc(var(--_d) * 0.6) var(--_out) calc(var(--_d) * 0.3), translate calc(var(--_d) * 0.6) var(--_out) calc(var(--_d) * 0.3);
+}
+
+/* ---------- icon variants (on the item or on the group) ---------- */
+/* plus (default): the vertical bar lies down → minus */
+.u-disclosure__trigger:is([aria-expanded="true"], [data-state="open"]) .u-disclosure__bar--v {
+  transform: rotate(90deg);
+  transition: transform var(--_d) var(--_in);
+}
+/* cross: the whole plus turns into × */
+[data-variant="cross"] .u-disclosure__trigger:is([aria-expanded="true"], [data-state="open"]) .u-disclosure__bar {
+  transform: rotate(135deg);
+  transition: transform var(--_d) var(--_in);
+}
+/* chevron: one joined chevron that flips */
+[data-variant="chevron"] .u-disclosure__bar { opacity: 0; }
+[data-variant="chevron"] .u-disclosure__chev { opacity: 1; }
+[data-variant="chevron"] .u-disclosure__trigger:is([aria-expanded="true"], [data-state="open"]) .u-disclosure__chev {
+  transform: rotate(-180deg);
+  transition: transform var(--_d) var(--_in);
+}
+
+/* ---------- options ---------- */
+/* icon on the left */
+[data-icon="start"] .u-disclosure__icon { order: -1; }
+
+/* lift: the open title shrinks up into a small label above its content */
+[data-title="lift"] .u-disclosure__trigger:is([aria-expanded="true"], [data-state="open"]) .u-disclosure__label {
+  transform: translateY(-3px) scale(0.82);
+  opacity: 0.7;
+  transition: transform var(--_d) var(--_in), opacity var(--_d) var(--_out);
+}
+
+/* slide: the open title steps in, marking which section is open */
+[data-title="slide"] .u-disclosure__trigger:is([aria-expanded="true"], [data-state="open"]) .u-disclosure__label {
+  transform: translateX(10px);
+  transition: transform var(--_d) var(--_in);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .u-disclosure-group, .u-disclosure-group *, .u-disclosure, .u-disclosure * { transition: none !important; }
+}

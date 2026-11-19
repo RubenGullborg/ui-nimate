@@ -15,8 +15,8 @@ const next = `U-${String(Math.max(...components.map((c) => Number(c.id.slice(2))
     <ul class="grid">
       {components.map((c) => (
         <li class="card">
-          <div class="stage" data-demo data-attr={c.state?.attr ?? ""} data-values={JSON.stringify(c.state?.values ?? [])}>
-            <div class="zoom" set:html={c.html} />
+          <div class="stage" data-demo data-attr={c.state?.attr ?? ""} data-values={JSON.stringify(c.state?.values ?? [])} data-target={c.state?.selector ?? ""}>
+            <div class="zoom" style={`scale:${Math.min(2, (c.preview?.zoom ?? 2.5) * 0.8)}; width:${c.preview?.width ?? "auto"}`} set:html={c.html} />
           </div>
           <a class="meta" href={`/components/${c.slug}`}>
             <span class="spec">Specimen {c.id} · {c.category}</span>
@@ -36,7 +36,7 @@ const next = `U-${String(Math.max(...components.map((c) => Number(c.id.slice(2))
         <div class="meta">
           <span class="spec">Specimen {next}</span>
           <h2>Coming soon</h2>
-          <p>Theme toggle and disclosure are next on the bench.</p>
+          <p>Copy button, password eye and submit states are next on the bench.</p>
         </div>
       </li>
     </ul>
@@ -48,12 +48,17 @@ const next = `U-${String(Math.max(...components.map((c) => Number(c.id.slice(2))
   document.querySelectorAll<HTMLElement>("[data-demo]").forEach((stage) => {
     const attr = stage.dataset.attr;
     const values: string[] = JSON.parse(stage.dataset.values || "[]");
-    const host = stage.querySelector<HTMLElement>(".zoom > *");
+    const root = stage.querySelector<HTMLElement>(".zoom > *");
+    const host = stage.dataset.target ? root?.querySelector<HTMLElement>(stage.dataset.target) ?? root : root;
     if (!attr || !host || values.length < 2) return;
     host.setAttribute("tabindex", "-1");
-    stage.addEventListener("click", () => {
-      const now = host.getAttribute(attr);
-      host.setAttribute(attr, now === values[1] ? values[0] : values[1]);
+    const many = stage.dataset.target ? (root?.querySelectorAll(stage.dataset.target).length ?? 0) > 1 : false;
+    stage.addEventListener("click", (e) => {
+      const hit = stage.dataset.target ? (e.target as HTMLElement).closest<HTMLElement>(stage.dataset.target) : null;
+      if (many && !hit) return; // in a stack, only a trigger toggles its own item
+      const el = hit || host;
+      const now = el.getAttribute(attr);
+      el.setAttribute(attr, now === values[1] ? values[0] : values[1]);
     });
   });
 </script>
@@ -70,7 +75,7 @@ const next = `U-${String(Math.max(...components.map((c) => Number(c.id.slice(2))
     color: var(--u-chalk); background: var(--u-blueprint) url(/brand/patterns/blueprint-grid.svg);
     border-bottom: 1.5px solid var(--fg);
   }
-  .zoom { scale: 2; display: grid; place-items: center; }
+  .zoom { display: grid; place-items: center; max-width: 80%; }
   .stage--soon { background: var(--surface); color: var(--muted); cursor: default; }
   .meta { display: flex; flex-direction: column; gap: 8px; padding: 20px; text-decoration: none; flex: 1; }
   .meta:hover h2 { text-decoration: underline; text-underline-offset: 6px; }

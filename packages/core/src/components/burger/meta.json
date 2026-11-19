@@ -1,6 +1,6 @@
 {
   "$schema": "../../../meta.schema.json",
-  "id": "U-002",
+  "id": "U-001",
   "slug": "burger",
   "name": "Burger",
   "category": "icon",
@@ -111,5 +111,10 @@
     "navigation",
     "hamburger",
     "mobile"
-  ]
+  ],
+  "tip": {
+    "title": "One button, two jobs",
+    "body": "In a nested mobile menu, switch the burger to the arrow variant while a submenu is open. The same button becomes a \"back\" button, and the turn between them tells people where they are.",
+    "code": "// a submenu opened\nburger.dataset.variant = \"arrow\";\n// back at the top level\nburger.dataset.variant = \"cross\";"
+  }
 }

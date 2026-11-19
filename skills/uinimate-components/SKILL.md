@@ -18,7 +18,7 @@ packages/core/src/components/<slug>/
 ```
 
 - Create new components with `pnpm new <slug> "<Name>"`. Never hand-copy another component.
-- `slug` is kebab-case and public (`theme-toggle`). The catalogue number (`U-003`) is brand metadata in `meta.json`, not part of paths.
+- `slug` is kebab-case and public (`theme-toggle`). The catalogue number (`U-002`) is brand metadata in `meta.json`, not part of paths.
 - Everything a component needs lives in its folder. No shared runtime, no cross-component imports. Tokens are optional (see §4).
 
 ## 2. State: what makes it animate
@@ -47,6 +47,14 @@ Rules:
 - Choose a variant with `data-variant="<name>"` on the root. The first variant in `meta.json` is the default and needs no attribute.
 - Variants share markup. If a variant needs different markup, it is a different component.
 - Aim for 2–4 variants per component.
+
+### Options beyond variants
+
+Independent switches (icon side, how a title moves…) are extra `data-*` attributes on the root, listed in `meta.json` → `attributes` (first choice = default, empty value = no attribute). Style them from any ancestor (`[data-icon="start"] .u-x__icon`) so they work on one item or a whole group. Give each component the settings that matter **for it** (e.g. divider thickness for a disclosure), not only the shared icon ones: more control is the point.
+
+### Several items
+
+A component may ship a group (e.g. `.u-disclosure-group` with two items). Point `state.selector` at the element that carries the state; the site toggles only the item you click, and the framework snippets wire a stack as "one open at a time".
 
 ## 4. Tunable CSS properties
 
@@ -93,7 +101,7 @@ Rules:
 
 ```json
 {
-  "id": "U-002",
+  "id": "U-001",
   "slug": "burger",
   "name": "Burger",
   "category": "icon",                      // icon | control | loader | layout | text | background
@@ -123,3 +131,4 @@ Rules:
 - [ ] `pnpm check` passes (schema, files, reduced-motion rule, CSS ≤ 1.5 kB gzipped for icons).
 - [ ] Looked at in Chrome, Safari and Firefox (or `support.level: experimental` with notes).
 - [ ] README has usage, tuning table and a "Manners" section; component page renders on the site.
+- [ ] `meta.tip` is a lab note unique to this component: a styling idea, a small hack or a pattern, not a repeat of the generic tuning tip.

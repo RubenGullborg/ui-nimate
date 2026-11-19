@@ -15,12 +15,15 @@ packages/core/     the library (npm: uinimate) — plain CSS + SVG, no runtime d
   meta.schema.json the meta.json contract
 apps/site/         Astro site (docs, playground, hero film). Brand assets synced from brand/ at dev/build.
 brand/             brand kit: tokens, logo, icon, patterns, brand guide, film (+ editable source)
-skills/            agent skills (uinimate-brand, uinimate-components). Claude Code loads them via .claude/skills/
+skills/            agent skills. Claude Code loads them via .claude/skills/
+  uinimate/             for anyone adding Uinimate components to their own project
+  uinimate-components/  the contract for building components in this repo
+  uinimate-brand/       Uinimate's own brand
 ```
 
 ## Rules for library code (`packages/core`)
 
-Read **`skills/uinimate-components/SKILL.md`** before creating or changing a component. In short: no runtime dependencies; state comes from an ARIA attribute with a `data-state` twin; variants via `data-variant`; tunables `--u-<slug>-*` read with fallbacks, never declared; reduced motion, visible focus, no layout shift. Scaffold with `pnpm new`, validate with `pnpm check`.
+Read **`skills/uinimate-components/SKILL.md`** before creating or changing a component. In short: no runtime dependencies; state comes from an ARIA attribute with a `data-state` twin; variants via `data-variant`; tunables `--u-<slug>-*` read with fallbacks, never declared; reduced motion, visible focus, no layout shift. Scaffold with `pnpm new`, validate with `pnpm check`. When you add a component, also add it to the table in `skills/uinimate/SKILL.md` (`pnpm check` enforces this).
 
 ## Commands
 

@@ -1,4 +1,4 @@
-# U-002 · Burger
+# U-001 · Burger
 
 Three lines meet in the middle, then become a cross, arrow, minus, plus or a twisting cross. Closing plays the same steps in reverse, so it feels as deliberate as opening.
 

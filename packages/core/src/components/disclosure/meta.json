@@ -1,0 +1,184 @@
+{
+  "$schema": "../../../meta.schema.json",
+  "id": "U-003",
+  "slug": "disclosure",
+  "name": "Disclosure",
+  "category": "control",
+  "description": "Collapsible sections that open to their natural height while the content slides in after. Stack as many as you like.",
+  "status": "experimental",
+  "support": {
+    "level": "baseline",
+    "notes": ""
+  },
+  "state": {
+    "attr": "aria-expanded",
+    "values": [
+      "false",
+      "true"
+    ],
+    "fallback": "data-state",
+    "fallbackValues": [
+      "closed",
+      "open"
+    ],
+    "selector": ".u-disclosure__trigger"
+  },
+  "variants": [
+    {
+      "name": "plus",
+      "label": "Plus"
+    },
+    {
+      "name": "cross",
+      "label": "Cross"
+    },
+    {
+      "name": "chevron",
+      "label": "Chevron"
+    }
+  ],
+  "tunables": [
+    {
+      "prop": "--u-disclosure-duration",
+      "label": "Duration",
+      "default": "360ms",
+      "type": "time",
+      "min": 120,
+      "max": 1200,
+      "step": 20,
+      "unit": "ms"
+    },
+    {
+      "prop": "--u-disclosure-padding",
+      "label": "Row spacing",
+      "default": "14px",
+      "type": "length",
+      "min": 4,
+      "max": 32,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "prop": "--u-disclosure-divider",
+      "label": "Divider thickness",
+      "default": "1px",
+      "type": "length",
+      "min": 0,
+      "max": 4,
+      "step": 0.5,
+      "unit": "px"
+    },
+    {
+      "prop": "--u-disclosure-divider-opacity",
+      "label": "Divider strength",
+      "default": "0.28",
+      "type": "number",
+      "min": 0,
+      "max": 1,
+      "step": 0.04
+    },
+    {
+      "prop": "--u-disclosure-size",
+      "label": "Icon size",
+      "default": "20px",
+      "type": "length",
+      "min": 12,
+      "max": 40,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "prop": "--u-icon-stroke",
+      "label": "Icon stroke",
+      "default": "2",
+      "type": "number",
+      "min": 1,
+      "max": 3,
+      "step": 0.25
+    },
+    {
+      "prop": "--u-icon-cap",
+      "label": "Icon line ends",
+      "default": "round",
+      "type": "keyword",
+      "options": [
+        {
+          "value": "round",
+          "label": "Round",
+          "note": "Rounded ends and corners.",
+          "also": {
+            "--u-icon-join": "round"
+          }
+        },
+        {
+          "value": "square",
+          "label": "Square",
+          "note": "Ends extend half a stroke past the line; sharp corners.",
+          "also": {
+            "--u-icon-join": "miter"
+          }
+        }
+      ]
+    },
+    {
+      "prop": "--u-disclosure-color",
+      "label": "Colour",
+      "default": "currentColor",
+      "type": "color"
+    }
+  ],
+  "preview": {
+    "zoom": 1.25,
+    "width": "360px"
+  },
+  "a11y": "Each trigger is a <button> with aria-expanded and aria-controls pointing at its panel's id, so give every panel a unique id. Closed panels are visibility: hidden, so their links and fields can't be tabbed into.",
+  "tags": [
+    "accordion",
+    "collapsible",
+    "faq",
+    "form",
+    "details"
+  ],
+  "attributes": [
+    {
+      "attr": "data-icon",
+      "label": "Icon side",
+      "choices": [
+        {
+          "value": "",
+          "label": "Right"
+        },
+        {
+          "value": "start",
+          "label": "Left"
+        }
+      ]
+    },
+    {
+      "attr": "data-title",
+      "label": "Title on open",
+      "choices": [
+        {
+          "value": "",
+          "label": "Still",
+          "note": "The title stays put."
+        },
+        {
+          "value": "lift",
+          "label": "Lift",
+          "note": "The title shrinks up into a small label above its content."
+        },
+        {
+          "value": "slide",
+          "label": "Slide",
+          "note": "The title steps in, marking which section is open."
+        }
+      ]
+    }
+  ],
+  "tip": {
+    "title": "Dim the others",
+    "body": "A small touch that makes a stack feel focused: when one section is open, fade the closed ones a little. Pure CSS with :has(), no state to manage.",
+    "code": ".u-disclosure-group:has([aria-expanded=\"true\"])\n  .u-disclosure:not(:has([aria-expanded=\"true\"])) {\n  opacity: 0.55;\n  transition: opacity 240ms;\n}"
+  }
+}

@@ -24,7 +24,7 @@
     "id": {
       "type": "string",
       "pattern": "^U-\\d{3}$",
-      "description": "Catalogue number, e.g. U-002. Never reused."
+      "description": "Catalogue number, e.g. U-001. Never reused."
     },
     "slug": {
       "type": "string",
@@ -106,6 +106,10 @@
                 "type": "string"
               },
               "minItems": 2
+            },
+            "selector": {
+              "type": "string",
+              "description": "CSS selector (inside the root) of the element that carries the state. Defaults to the root."
             }
           }
         }
@@ -222,6 +226,85 @@
       "type": "array",
       "items": {
         "type": "string"
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "How the site previews the component.",
+      "properties": {
+        "zoom": {
+          "type": "number"
+        },
+        "width": {
+          "type": "string"
+        }
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "description": "Extra switches beyond variants, each an attribute on the root, e.g. data-icon=\"start\".",
+      "items": {
+        "type": "object",
+        "required": [
+          "attr",
+          "label",
+          "choices"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "attr": {
+            "type": "string",
+            "pattern": "^data-[a-z-]+$"
+          },
+          "label": {
+            "type": "string"
+          },
+          "choices": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "required": [
+                "value",
+                "label"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "description": "Empty string = default (no attribute)."
+                },
+                "label": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "tip": {
+      "type": "object",
+      "required": [
+        "title",
+        "body"
+      ],
+      "additionalProperties": false,
+      "description": "The lab note shown under the usage guide.",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        }
       }
     }
   }

@@ -1,5 +1,5 @@
 /*
-  U-002 · Burger
+  U-001 · Burger
   Three lines that meet in the middle, then turn into a cross, an arrow or a minus.
   State:    aria-expanded="true" (twin: data-state="open")
   Variants: data-variant="cross" (default) | "arrow" | "minus" | "plus" | "twist"

@@ -14,8 +14,9 @@
 
 | No. | Name | What it does |
 |---|---|---|
-| U-001 | [Morph](packages/core/src/components/morph) | One shape morphs square → triangle → hexagon → circle with a spring hop |
-| U-002 | [Burger](packages/core/src/components/burger) | Three lines meet, then become a cross, arrow, minus, plus or a twisting cross |
+| U-001 | [Burger](packages/core/src/components/burger) | Three lines meet, then become a cross, arrow, minus, plus or a twisting cross |
+| U-002 | [Theme toggle](packages/core/src/components/theme-toggle) | Sun to moon: rays pull in, the moon draws in. Six variants |
+| U-003 | [Disclosure](packages/core/src/components/disclosure) | Collapsible sections that open to their natural height. Stackable |
 
 ## Use
 
@@ -57,6 +58,10 @@ pnpm check                    # validate every component
 ```
 
 How components are built: [`skills/uinimate-components/SKILL.md`](skills/uinimate-components/SKILL.md).
+
+## Use it with an AI agent
+
+Copy [`skills/uinimate`](skills/uinimate) into your agent's skills folder (for Claude Code: `.claude/skills/uinimate`) and ask for "an animated burger menu", "a dark-mode toggle" or "an FAQ accordion". The skill tells the agent how to fetch, wire and tune the components in your framework.
 
 ## Brand
 

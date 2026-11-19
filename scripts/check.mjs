@@ -39,7 +39,7 @@ for (const slug of slugs) {
     if (!(k in meta)) err(slug, `meta.${k} is required`);
   }
   if (meta.slug !== slug) err(slug, `meta.slug "${meta.slug}" must match the folder name`);
-  if (!/^U-\d{3}$/.test(meta.id ?? "")) err(slug, `meta.id must look like U-002`);
+  if (!/^U-\d{3}$/.test(meta.id ?? "")) err(slug, `meta.id must look like U-001`);
   else if (ids.has(meta.id)) err(slug, `meta.id ${meta.id} is already used by ${ids.get(meta.id)}`);
   else ids.set(meta.id, slug);
   if (!ENUMS.category.includes(meta.category)) err(slug, `meta.category must be one of ${ENUMS.category.join(", ")}`);
@@ -66,6 +66,15 @@ for (const slug of slugs) {
   if (!Array.isArray(meta.variants) || !meta.variants.length) err(slug, `meta.variants needs at least one entry`);
   else for (const v of meta.variants.slice(1)) if (!css.includes(`[data-variant="${v.name}"]`)) err(slug, `CSS never selects [data-variant="${v.name}"]`);
 
+  // attribute switches: every non-default choice must be styled
+  for (const a of meta.attributes ?? []) {
+    if (!/^data-[a-z-]+$/.test(a.attr ?? "")) err(slug, `attribute ${a.attr} must be a data-* attribute`);
+    for (const ch of (a.choices ?? []).filter((c) => c.value)) {
+      if (!css.includes(`[${a.attr}="${ch.value}"]`)) err(slug, `CSS never selects [${a.attr}="${ch.value}"]`);
+    }
+  }
+  if (!meta.tip) warn(slug, `no lab note (meta.tip); every component should have its own`);
+
   // tunables: used with a fallback, never declared on the component
   for (const t of meta.tunables ?? []) {
     if (!/^--u-[a-z0-9-]+$/.test(t.prop)) err(slug, `tunable ${t.prop} must be named --u-…`);
@@ -89,6 +98,12 @@ for (const slug of slugs) {
   const budget = BUDGET[meta.category] ?? 2500;
   const line = `${gz} B gzipped CSS (budget ${budget} B)`;
   if (gz > budget) err(slug, line); else console.log(`  ✓ ${line}`);
+}
+
+// the customer-facing skill must list every component
+const useSkill = readFileSync(join(root, "skills/uinimate/SKILL.md"), "utf8");
+for (const slug of slugs) {
+  if (!useSkill.includes(`\`${slug}\``)) err("skills/uinimate", `SKILL.md doesn't list the "${slug}" component yet`);
 }
 
 // the all-in-one bundle must include every component

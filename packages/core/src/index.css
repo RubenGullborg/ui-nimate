@@ -1,4 +1,5 @@
 /* Uinimate — everything in one file. Import single components instead to ship less. */
 @import "./tokens.css";
-@import "./components/morph/morph.css";
 @import "./components/burger/burger.css";
+@import "./components/theme-toggle/theme-toggle.css";
+@import "./components/disclosure/disclosure.css";

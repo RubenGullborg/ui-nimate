@@ -9,7 +9,10 @@ export interface Meta {
   id: string; slug: string; name: string; category: string; description: string;
   status: "experimental" | "stable";
   support: { level: "baseline" | "experimental"; notes?: string };
-  state: null | { attr: string; values: string[]; fallback?: string; fallbackValues?: string[] };
+  state: null | { attr: string; values: string[]; fallback?: string; fallbackValues?: string[]; selector?: string };
+  preview?: { zoom?: number; width?: string };
+  attributes?: { attr: string; label: string; choices: { value: string; label: string; note?: string }[] }[];
+  tip?: { title: string; body: string; code?: string };
   variants: { name: string; label: string }[];
   tunables: Tunable[];
   a11y: string;
@@ -25,7 +28,7 @@ function sizeOf(css: string): Size {
   const bytes = gzipSync(css.replace(/\/\*[\s\S]*?\*\//g, "")).length;
   const tier = bytes < 1024 ? "lightweight" : bytes < 2560 ? "moderate" : "heavy";
   const color = { lightweight: "--u-ring-mint", moderate: "--u-ring-butter", heavy: "--u-ring-coral" }[tier];
-  return { bytes, kb: (bytes / 1024).toFixed(1), tier, color };
+  return { bytes, kb: (bytes / 1024).toFixed(2), tier, color };
 }
 const metas = import.meta.glob<Meta>("../../../../packages/core/src/components/*/meta.json", { eager: true, import: "default" });
 const htmls = import.meta.glob<string>("../../../../packages/core/src/components/*/*.html", { eager: true, query: "?raw", import: "default" });

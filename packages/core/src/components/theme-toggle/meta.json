@@ -1,0 +1,125 @@
+{
+  "$schema": "../../../meta.schema.json",
+  "id": "U-002",
+  "slug": "theme-toggle",
+  "name": "Theme toggle",
+  "category": "icon",
+  "description": "Sun to moon: detached rays pull in one by one, the sun winds up and the moon draws in. Plus five ways to move instead.",
+  "status": "experimental",
+  "support": {
+    "level": "baseline",
+    "notes": ""
+  },
+  "state": {
+    "attr": "aria-pressed",
+    "values": [
+      "false",
+      "true"
+    ],
+    "fallback": "data-state",
+    "fallbackValues": [
+      "off",
+      "on"
+    ]
+  },
+  "variants": [
+    {
+      "name": "draw",
+      "label": "Draw"
+    },
+    {
+      "name": "spin",
+      "label": "Spin"
+    },
+    {
+      "name": "rise",
+      "label": "Rise"
+    },
+    {
+      "name": "flip",
+      "label": "Flip"
+    },
+    {
+      "name": "orbit",
+      "label": "Orbit"
+    },
+    {
+      "name": "swap",
+      "label": "Swap"
+    }
+  ],
+  "tunables": [
+    {
+      "prop": "--u-theme-toggle-duration",
+      "label": "Duration",
+      "default": "800ms",
+      "type": "time",
+      "min": 300,
+      "max": 2000,
+      "step": 20,
+      "unit": "ms"
+    },
+    {
+      "prop": "--u-theme-toggle-size",
+      "label": "Size",
+      "default": "24px",
+      "type": "length",
+      "min": 16,
+      "max": 96,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "prop": "--u-icon-stroke",
+      "label": "Stroke",
+      "default": "1.5",
+      "type": "number",
+      "min": 1,
+      "max": 3,
+      "step": 0.25
+    },
+    {
+      "prop": "--u-icon-cap",
+      "label": "Line ends",
+      "default": "round",
+      "type": "keyword",
+      "options": [
+        {
+          "value": "round",
+          "label": "Round",
+          "note": "Rounded ends and corners.",
+          "also": {
+            "--u-icon-join": "round"
+          }
+        },
+        {
+          "value": "square",
+          "label": "Square",
+          "note": "Ends extend half a stroke past the line; sharp corners.",
+          "also": {
+            "--u-icon-join": "miter"
+          }
+        }
+      ]
+    },
+    {
+      "prop": "--u-theme-toggle-color",
+      "label": "Colour",
+      "default": "currentColor",
+      "type": "color"
+    }
+  ],
+  "a11y": "Use on a <button> with a fixed aria-label such as \"Dark mode\"; aria-pressed=\"true\" means dark mode is on. Screen readers announce it as a toggle.",
+  "tags": [
+    "theme",
+    "dark mode",
+    "light mode",
+    "sun",
+    "moon"
+  ],
+  "tip": {
+    "title": "Start in the right mode",
+    "body": "Read the visitor's system setting on first load, then let the toggle take over. Set aria-pressed before first paint and the icon starts in the right state without animating.",
+    "code": "const dark = localStorage.theme\n  ? localStorage.theme === \"dark\"\n  : matchMedia(\"(prefers-color-scheme: dark)\").matches;\ntoggle.setAttribute(\"aria-pressed\", String(dark));"
+  }
+}
