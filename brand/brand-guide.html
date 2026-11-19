@@ -1,0 +1,409 @@
+<meta charset="utf-8">
+<title>Uinimate Brand Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Space+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: specimen catalogue — a mono rail names each plate, content sits in one wide column; light = paper, dark = blueprint. */
+:root{
+  --bg:#f5f8ef; --surface:#ecf0e4; --fg:#142030; --muted:#515f6e; --line:#c3d5d6; --accent:#4494c8;
+  --display:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"Space Mono",ui-monospace,Menlo,monospace;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --spring:cubic-bezier(.34,1.56,.64,1);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#143463;--surface:#0a254d;--fg:#e3f1fb;--muted:#a3bbd0;--line:#2f4f7f;--accent:#89d0ff;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#143463;--surface:#0a254d;--fg:#e3f1fb;--muted:#a3bbd0;--line:#2f4f7f;--accent:#89d0ff;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 96px}
+.wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:88px}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--display);font-weight:500;font-variation-settings:"opsz" 72;line-height:1.05;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h2{font-size:clamp(36px,5vw,56px)}
+h3{font-size:24px;letter-spacing:0}
+p{margin:0;max-width:65ch}
+.lede{font-size:18px;color:var(--muted)}
+.label{font:11px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.spec{font:12px/1.4 var(--mono);letter-spacing:.02em}
+.muted{color:var(--muted)}
+
+header{display:flex;flex-direction:column;gap:28px;padding-bottom:40px;border-bottom:1px solid var(--line)}
+header .meta{display:flex;flex-wrap:wrap;gap:8px 28px}
+.hero-logo{font-size:clamp(72px,15vw,184px)}
+
+.plate{display:grid;grid-template-columns:170px minmax(0,1fr);gap:24px 40px}
+.rail{display:flex;flex-direction:column;gap:4px;border-top:2px solid var(--fg);padding-top:10px;align-self:start;position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px)}
+.content{display:flex;flex-direction:column;gap:28px;min-width:0}
+@media (max-width:760px){.plate{grid-template-columns:minmax(0,1fr)}.rail{position:static}}
+
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.grid-s{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+.panel{border:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
+.panel .stage{padding:32px 24px;display:grid;place-items:center;min-height:180px;overflow:hidden}
+.panel .cap{border-top:1px solid var(--line);padding:12px 14px;display:flex;flex-direction:column;gap:2px;background:var(--surface)}
+.panel .cap b{font:500 12px var(--mono)}
+.panel .cap span{font-size:14px;color:var(--muted)}
+.on-paper{background:#f5f8ef}
+.on-blueprint{background:#143463;background-image:url(patterns/blueprint-grid.svg)}
+.on-paper-grid{background:#f5f8ef url(patterns/paper-grid.svg)}
+
+ul.rules{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+ul.rules li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;max-width:70ch}
+ul.rules li::before{content:attr(data-k);font:12px/1.7 var(--mono);color:var(--muted)}
+
+/* ---- Logo (same as logo/uinimate-logo.css) ---- */
+.u-logo{--u-logo-ink:#142030;--u-logo-rule:#515f6e;--u-logo-a1:#4494c8;--u-logo-a2:#c67164;--u-logo-a3:#579f68;--u-logo-a4:#977cc5;
+  --u-logo-dot:.17em;--u-logo-dot-y:-.03em;position:relative;display:inline-block;color:var(--u-logo-ink);
+  font-family:"Newsreader",Georgia,serif;font-weight:500;font-variation-settings:"opsz" 72;line-height:1;letter-spacing:-.015em;padding-bottom:.12em}
+.u-logo--blueprint{--u-logo-ink:#e3f1fb;--u-logo-rule:#a9bfd6;--u-logo-a1:#89d0ff;--u-logo-a2:#ffafa1;--u-logo-a3:#98daa5;--u-logo-a4:#d1b9ff}
+.u-logo--theme{--u-logo-ink:var(--fg);--u-logo-rule:var(--muted)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .u-logo--theme{--u-logo-a1:#89d0ff;--u-logo-a2:#ffafa1;--u-logo-a3:#98daa5;--u-logo-a4:#d1b9ff}}
+:root[data-theme="dark"] .u-logo--theme{--u-logo-a1:#89d0ff;--u-logo-a2:#ffafa1;--u-logo-a3:#98daa5;--u-logo-a4:#d1b9ff}
+.u-logo__word{position:relative;display:inline-block}
+.u-logo__i{position:relative;display:inline-block}
+.u-logo__i>i{position:absolute;left:50%;top:var(--u-logo-dot-y);width:var(--u-logo-dot);height:var(--u-logo-dot);margin-left:calc(var(--u-logo-dot)/-2);background:var(--u-logo-a1);
+  clip-path:polygon(50% 0%,78.9% 0%,100% 21.1%,100% 50%,100% 78.9%,78.9% 100%,50% 100%,21.1% 100%,0% 78.9%,0% 50%,0% 21.1%,21.1% 0%);animation:u-logo-morph 6s infinite}
+.u-logo__i--2>i{animation-delay:-3s}
+.u-logo__base{position:absolute;left:-.06em;right:-.06em;top:.79em;height:1px;background:var(--u-logo-rule);opacity:.55}
+.u-logo__base::before,.u-logo__base::after{content:"";position:absolute;top:-.05em;width:1px;height:.1em;background:var(--u-logo-rule)}
+.u-logo__base::before{left:0}.u-logo__base::after{right:0}
+.u-logo__i::after{content:"";position:absolute;left:51%;top:.755em;width:1px;height:.07em;background:var(--u-logo-rule);opacity:.7}
+@keyframes u-logo-morph{
+  0%,16%{clip-path:polygon(50% 0%,78.9% 0%,100% 21.1%,100% 50%,100% 78.9%,78.9% 100%,50% 100%,21.1% 100%,0% 78.9%,0% 50%,0% 21.1%,21.1% 0%);transform:translateY(0) rotate(0);background:var(--u-logo-a1);animation-timing-function:var(--spring)}
+  24%,40%{clip-path:polygon(50% 0%,63.6% 26.5%,69.8% 38.6%,75.6% 50%,86.4% 71%,77.4% 97.5%,50% 97.5%,22.6% 97.5%,13.6% 71%,24.4% 50%,30.2% 38.6%,36.4% 26.5%);transform:translateY(-.06em) rotate(0);background:var(--u-logo-a2);animation-timing-function:var(--spring)}
+  48%,64%{clip-path:polygon(50% 6.7%,75% 6.7%,87.5% 28.3%,100% 50%,87.5% 71.7%,75% 93.3%,50% 93.3%,25% 93.3%,12.5% 71.7%,0% 50%,12.5% 28.3%,25% 6.7%);transform:translateY(0) rotate(30deg);background:var(--u-logo-a3);animation-timing-function:var(--spring)}
+  72%,88%{clip-path:polygon(50% 0%,75% 6.7%,93.3% 25%,100% 50%,93.3% 75%,75% 93.3%,50% 100%,25% 93.3%,6.7% 75%,0% 50%,6.7% 25%,25% 6.7%);transform:translateY(-.05em) rotate(30deg);background:var(--u-logo-a4);animation-timing-function:var(--spring)}
+  96%,100%{clip-path:polygon(50% 0%,78.9% 0%,100% 21.1%,100% 50%,100% 78.9%,78.9% 100%,50% 100%,21.1% 100%,0% 78.9%,0% 50%,0% 21.1%,21.1% 0%);transform:translateY(0) rotate(90deg);background:var(--u-logo-a1)}
+}
+.u-logo--still .u-logo__i>i{animation:none}
+.u-logo--still .u-logo__i--2>i{background:var(--u-logo-a2)}
+
+/* clear space demo */
+.clear{position:relative;display:inline-block;padding:.5em;outline:1px dashed var(--accent);outline-offset:0}
+.clear::after{content:"½ em";position:absolute;top:.1em;left:.12em;font:11px var(--mono);color:var(--accent)}
+
+/* ---- Color ---- */
+.sw-row{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.sw{border:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
+.sw .chip{height:84px}
+.sw .t{padding:8px 10px;display:flex;flex-direction:column;gap:1px;background:var(--surface)}
+.sw .t b{font:500 13px var(--body)}
+.sw .t span{font:11px/1.4 var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.ring{display:grid;gap:6px;grid-template-columns:repeat(auto-fill,minmax(80px,1fr))}
+.ring .c{height:88px;display:flex;flex-direction:column;justify-content:flex-end;padding:6px;font:10px/1.35 var(--mono)}
+
+/* ---- Type ---- */
+.scale{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.scale>div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
+.scale>div>div{min-width:0;overflow-wrap:anywhere}
+@media (max-width:560px){.scale>div{grid-template-columns:minmax(0,1fr)}}
+.weights{display:flex;flex-wrap:wrap;gap:12px 32px;font-family:var(--display);font-size:44px;font-variation-settings:"opsz" 72}
+
+/* ---- Shapes ---- */
+.shape{width:56px;height:56px;display:block}
+.sh-ci{border-radius:50%}
+.sh-tr{clip-path:polygon(50% 4%,98% 96%,2% 96%)}
+.sh-hx{clip-path:polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0 50%)}
+.sh-pt{clip-path:polygon(50% 2%,98% 38%,80% 98%,20% 98%,2% 38%)}
+.sh-rc{width:96px;height:32px}
+.shapes .stage{min-height:120px;padding:24px}
+
+/* ---- Annotations ---- */
+.ann{display:flex;flex-wrap:wrap;gap:10px}
+.ann span{font:13px var(--mono);padding:4px 9px;border:1px solid var(--line);background:var(--surface)}
+
+/* ---- Motion ---- */
+.curve svg{width:100%;height:auto;display:block}
+.curve text{font-family:var(--mono)}
+.lane{position:relative;height:30px;margin:0 16px 16px;border-top:1px dashed var(--line)}
+.lane i{position:absolute;top:8px;left:0;width:16px;height:16px;background:var(--accent);animation:lane 2.2s infinite alternate}
+@keyframes lane{to{left:calc(100% - 16px)}}
+table{border-collapse:collapse;width:100%;font-size:14px}
+.tbl{overflow-x:auto}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:400}
+td code{font:12px var(--mono)}
+
+/* ---- Patterns ---- */
+.pat img{display:block;width:100%;height:auto}
+.tile{height:180px}
+
+.dont{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.dont .stage{min-height:120px;font-size:44px;position:relative}
+.dont .x{position:absolute;top:8px;right:10px;font:12px var(--mono);color:#c67164}
+
+.files{font:13px/1.9 var(--mono);background:var(--surface);border:1px solid var(--line);padding:16px 20px;overflow-x:auto;white-space:pre;margin:0}
+
+@media (prefers-reduced-motion:reduce){.u-logo__i>i,.lane i{animation:none}.u-logo__i--2>i{background:var(--u-logo-a2)}}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="meta"><span class="label">Brand guide · v0.1</span><span class="label">19 Nov 2026</span><span class="label">Specimen U-000</span></div>
+  <span class="u-logo u-logo--theme hero-logo" role="img" aria-label="Uinimate"><span class="u-logo__word" aria-hidden="true">U<span class="u-logo__i">ı<i></i></span>n<span class="u-logo__i u-logo__i--2">ı<i></i></span>mate</span><span class="u-logo__base" aria-hidden="true"></span></span>
+  <p class="lede">Uinimate is a laboratory of motion: dependency-free CSS and SVG animations that work in any framework and can be tuned before you copy them. This guide is the reference for how the brand looks, moves and speaks.</p>
+</header>
+
+<!-- I CONCEPT -->
+<section class="plate" id="concept">
+  <div class="rail"><span class="label">Plate I</span><span class="spec">Concept & voice</span></div>
+  <div class="content">
+    <h2>A laboratory of motion</h2>
+    <p>Every animation is a specimen. It gets a catalogue number, it is measured, and its behaviour is plotted. Science, nature, geometry and astronomy frame the brand as annotations and textures. They suggest curiosity and learning, and never become the product itself.</p>
+    <div class="grid">
+      <div class="panel"><div class="cap" style="border-top:0"><b>Core values</b>
+        <span>1. Zero dependencies. 2. Works everywhere. 3. Make it yours. 4. Motion with manners. 5. Craft over quantity.</span></div></div>
+      <div class="panel"><div class="cap" style="border-top:0"><b>Voice</b>
+        <span>Friendly, confident, short. A senior developer who enjoys the craft. "This one wiggles. Gently. You can make it wiggle harder."</span></div></div>
+      <div class="panel"><div class="cap" style="border-top:0"><b>Taglines</b>
+        <span>Motion for any stack. No dependencies.<br>Copy. Tune. Ship. Anywhere.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- II LOGO -->
+<section class="plate" id="logo">
+  <div class="rail"><span class="label">Plate II</span><span class="spec">Logo</span></div>
+  <div class="content">
+    <h2>The living i</h2>
+    <p>The wordmark is set in upright Newsreader Medium. The dots on both i's are shapes that morph in turn: square, triangle, hexagon, circle, each with a spring. A hairline baseline with measuring ticks under each i borrows from the constructed wordmark. The logo is built in HTML and CSS, so the brand mark is itself a Uinimate specimen.</p>
+    <div class="grid">
+      <div class="panel"><div class="stage on-paper"><span class="u-logo" style="font-size:72px" role="img" aria-label="Uinimate"><span class="u-logo__word" aria-hidden="true">U<span class="u-logo__i">ı<i></i></span>n<span class="u-logo__i u-logo__i--2">ı<i></i></span>mate</span><span class="u-logo__base" aria-hidden="true"></span></span></div>
+        <div class="cap"><b>Primary · on paper</b><span>Ink wordmark, deep-ring dots.</span></div></div>
+      <div class="panel"><div class="stage on-blueprint"><span class="u-logo u-logo--blueprint" style="font-size:72px" role="img" aria-label="Uinimate"><span class="u-logo__word" aria-hidden="true">U<span class="u-logo__i">ı<i></i></span>n<span class="u-logo__i u-logo__i--2">ı<i></i></span>mate</span><span class="u-logo__base" aria-hidden="true"></span></span></div>
+        <div class="cap"><b>Primary · on blueprint</b><span>Chalk wordmark, light-ring dots.</span></div></div>
+      <div class="panel"><div class="stage on-paper"><span class="u-logo u-logo--still" style="font-size:72px" role="img" aria-label="Uinimate"><span class="u-logo__word" aria-hidden="true">U<span class="u-logo__i">ı<i></i></span>n<span class="u-logo__i u-logo__i--2">ı<i></i></span>mate</span><span class="u-logo__base" aria-hidden="true"></span></span></div>
+        <div class="cap"><b>Still</b><span>Square in sky, square in coral. For print, email and reduced motion.</span></div></div>
+      <div class="panel"><div class="stage on-paper-grid"><span class="clear"><span class="u-logo u-logo--still" style="font-size:56px" role="img" aria-label="Uinimate"><span class="u-logo__word" aria-hidden="true">U<span class="u-logo__i">ı<i></i></span>n<span class="u-logo__i u-logo__i--2">ı<i></i></span>mate</span><span class="u-logo__base" aria-hidden="true"></span></span></span></div>
+        <div class="cap"><b>Clear space</b><span>Half the font size on every side. Nothing else enters that box.</span></div></div>
+    </div>
+    <ul class="rules">
+      <li data-k="01">Animated logo at 40px font size and up. Below that, use the still logo. Below 24px, use the icon.</li>
+      <li data-k="02">Only two colour treatments: ink on paper, chalk on blueprint. Never place it on a pastel.</li>
+      <li data-k="03">Both dots never show the same shape or colour at once. The second runs half a cycle behind the first.</li>
+      <li data-k="04">Keep the baseline and ticks. They are part of the mark, not decoration.</li>
+    </ul>
+    <h3>Don't</h3>
+    <div class="dont">
+      <div class="panel"><div class="stage on-paper"><span class="x">✕</span><span style="font-family:var(--display);font-style:italic;color:#142030">Uinimate</span></div><div class="cap"><b>No italic</b><span>The dots collide with slanted stems.</span></div></div>
+      <div class="panel"><div class="stage" style="background:#d1b9ff"><span class="x" style="color:#142030">✕</span><span class="u-logo u-logo--still" style="font-size:44px"><span class="u-logo__word">U<span class="u-logo__i">ı<i></i></span>n<span class="u-logo__i u-logo__i--2">ı<i></i></span>mate</span><span class="u-logo__base"></span></span></div><div class="cap"><b>No pastel backgrounds</b><span>The dots disappear into the ring colours.</span></div></div>
+      <div class="panel"><div class="stage on-paper"><span class="x">✕</span><span style="font-family:var(--display);font-weight:500;color:#142030;letter-spacing:.12em">UINIMATE</span></div><div class="cap"><b>No all-caps</b><span>The i's lose their dots, and the idea goes with them.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- III ICON -->
+<section class="plate" id="icon">
+  <div class="rail"><span class="label">Plate III</span><span class="spec">Icon</span></div>
+  <div class="content">
+    <h2>Particle u</h2>
+    <p>Fourteen small shapes in a 5 × 5 grid form a lowercase u. The empty cells keep faint dots, like graph paper. In the animated version the shapes scatter and regroup. Use it next to the logo, as a favicon, as an avatar and as an app icon.</p>
+    <div class="grid-s">
+      <div class="panel"><div class="stage on-paper"><img src="icon/uinimate-icon-animated.svg" width="120" height="120" alt="Uinimate icon, animated"></div><div class="cap"><b>Animated · paper</b><span>icon/uinimate-icon-animated.svg</span></div></div>
+      <div class="panel"><div class="stage on-blueprint"><img src="icon/uinimate-icon-animated-blueprint.svg" width="120" height="120" alt="Uinimate icon on blueprint, animated"></div><div class="cap"><b>Animated · blueprint</b><span>icon/uinimate-icon-animated-blueprint.svg</span></div></div>
+      <div class="panel"><div class="stage on-paper"><img src="icon/uinimate-app-icon.svg" width="120" height="120" alt="Uinimate app icon"></div><div class="cap"><b>App icon</b><span>icon/uinimate-app-icon.svg · 512 px</span></div></div>
+      <div class="panel"><div class="stage on-paper" style="gap:18px;display:flex;align-items:flex-end;justify-content:center">
+          <img src="icon/uinimate-icon.svg" width="64" height="64" alt="Icon at 64 pixels"><img src="icon/uinimate-icon.svg" width="32" height="32" alt="Icon at 32 pixels"><img src="icon/uinimate-icon.svg" width="16" height="16" alt="Icon at 16 pixels"></div>
+        <div class="cap"><b>Sizes</b><span>64 · 32 · 16 px. Still at 32 px and below.</span></div></div>
+    </div>
+    <div class="panel"><div class="stage on-paper" style="min-height:140px"><span style="display:inline-flex;align-items:center;gap:.35em;font-size:56px"><img src="icon/uinimate-icon.svg" alt="" style="width:.95em;height:.95em"><span class="u-logo" role="img" aria-label="Uinimate"><span class="u-logo__word" aria-hidden="true">U<span class="u-logo__i">ı<i></i></span>n<span class="u-logo__i u-logo__i--2">ı<i></i></span>mate</span><span class="u-logo__base" aria-hidden="true"></span></span></span></div>
+      <div class="cap"><b>Lockup</b><span>Icon height 0.95 × font size, gap 0.35 em. The icon sits on the same baseline grid as the wordmark.</span></div></div>
+  </div>
+</section>
+
+<!-- IV COLOR -->
+<section class="plate" id="color">
+  <div class="rail"><span class="label">Plate IV</span><span class="spec">Colour</span></div>
+  <div class="content">
+    <h2>Paper, ink, blueprint and the ring</h2>
+    <p>Light screens are paper. Dark screens are blueprint, never black. All colour comes from one formula, so twelve hues still read as one tone. OKLCH is the source of truth; hex is the fallback.</p>
+    <h3>Base</h3>
+    <div class="sw-row" id="base"></div>
+    <h3>Ring · oklch(0.83 0.10 h)</h3>
+    <p class="muted">For shapes, fills, highlights and anything on blueprint. Text on the ring is always ink.</p>
+    <div class="ring" id="ring"></div>
+    <h3>Ring deep · oklch(0.64 0.11 h)</h3>
+    <p class="muted">For small marks on paper (logo dots, icon, chart lines) where the light ring would lack contrast. Not for text.</p>
+    <div class="ring" id="deep"></div>
+  </div>
+</section>
+
+<!-- V TYPE -->
+<section class="plate" id="type">
+  <div class="rail"><span class="label">Plate V</span><span class="spec">Typography</span></div>
+  <div class="content">
+    <h2>Newsreader, Space Mono, Inter</h2>
+    <p>Newsreader carries the big words, Space Mono carries specs and labels, and Inter carries the docs. Newsreader is a variable font with weights from 200 to 800 and an optical-size axis, so boldness can be tuned at any time without changing the family. Big sizes use <span class="spec">opsz 72</span> for tighter, sharper letters.</p>
+    <div class="weights"><span style="font-weight:300">Specimen</span><span style="font-weight:500">Specimen</span><span style="font-weight:700">Specimen</span><span style="font-style:italic;font-weight:400">Specimen</span></div>
+    <p class="spec muted">300 · 500 (default) · 700 · italic 400 (sparingly, never in the logo)</p>
+    <div class="scale">
+      <div><span class="spec muted">display-xl · 96/1.0</span><div style="font:500 clamp(48px,8vw,96px)/1 var(--display);font-variation-settings:'opsz' 72;letter-spacing:-.015em">Animate</div></div>
+      <div><span class="spec muted">display-l · 64/1.05</span><div style="font:500 clamp(40px,6vw,64px)/1.05 var(--display);font-variation-settings:'opsz' 72">Bring it to life</div></div>
+      <div><span class="spec muted">display-m · 40/1.1</span><div style="font:500 40px/1.1 var(--display);font-variation-settings:'opsz' 60">Copy. Tune. Ship.</div></div>
+      <div><span class="spec muted">heading · 28/1.2</span><div style="font:500 28px/1.2 var(--display)">Specimen U-017 · Wave</div></div>
+      <div><span class="spec muted">body · Inter 16/1.6</span><div style="font:400 16px/1.6 var(--body)">Paste the CSS into any project. It has no runtime and nothing to install.</div></div>
+      <div><span class="spec muted">spec · Space Mono 12</span><div style="font:12px/1.4 var(--mono);letter-spacing:.02em">[ ∆t = 240ms ] · ease spring · ø 48px</div></div>
+      <div><span class="spec muted">label · Space Mono 11 caps</span><div style="font:11px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase">Plate III · Primitives</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VI SHAPES -->
+<section class="plate" id="shapes">
+  <div class="rail"><span class="label">Plate VI</span><span class="spec">Shapes</span></div>
+  <div class="content">
+    <h2>Six primitives</h2>
+    <p>Hard edges, flat fills, no shadows and no rounded corners. Each shape can stand for one part of the library, so the shapes double as a wayfinding system. This mapping is a proposal.</p>
+    <div class="grid-s shapes">
+      <div class="panel"><div class="stage"><span class="shape sh-ci" style="background:#89d0ff"></span></div><div class="cap"><b>Circle</b><span>Animations</span></div></div>
+      <div class="panel"><div class="stage"><span class="shape" style="background:#98daa5"></span></div><div class="cap"><b>Square</b><span>Primitives</span></div></div>
+      <div class="panel"><div class="stage"><span class="shape sh-rc" style="background:#e0c579"></span></div><div class="cap"><b>Rectangle</b><span>Components</span></div></div>
+      <div class="panel"><div class="stage"><span class="shape sh-hx" style="background:#d1b9ff"></span></div><div class="cap"><b>Hexagon</b><span>Sections</span></div></div>
+      <div class="panel"><div class="stage"><span class="shape sh-pt" style="background:#ffafa1"></span></div><div class="cap"><b>Pentagon</b><span>Backgrounds</span></div></div>
+      <div class="panel"><div class="stage"><span class="shape sh-tr" style="background:#77ddca"></span></div><div class="cap"><b>Triangle</b><span>Shaders</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VII ANNOTATIONS -->
+<section class="plate" id="annotations">
+  <div class="rail"><span class="label">Plate VII</span><span class="spec">Annotations</span></div>
+  <div class="content">
+    <h2>Measured, numbered, labelled</h2>
+    <p>Annotations surround the content like notes in a lab book. They use real values from the component wherever possible, set in Space Mono at 11–13 px.</p>
+    <div class="ann"><span>[ ∆t = 240ms ]</span><span>[ ø 48px ]</span><span>[ φ 1.618 ]</span><span>[ λ = 0.6 ]</span><span>∠ 60°</span><span>≈ 16.7ms / frame</span><span>Fig. 04 — Spring</span><span>Plate III</span><span>Specimen U-017</span><span>∫ ease</span><span>H₂O</span><span>☉ ☽ ♄</span></div>
+    <div class="tbl"><table>
+      <thead><tr><th>Format</th><th>Use</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><code>[ key = value ]</code></td><td>A measured property of the component</td><td><code>[ ∆t = 240ms ]</code></td></tr>
+        <tr><td><code>Specimen U-###</code></td><td>Catalogue number of a component, permanent</td><td><code>Specimen U-017 · Wave</code></td></tr>
+        <tr><td><code>Fig. ## — Name</code></td><td>Caption for a diagram or demo</td><td><code>Fig. 04 — Spring</code></td></tr>
+        <tr><td><code>Plate (roman)</code></td><td>Section of a page or doc</td><td><code>Plate III</code></td></tr>
+        <tr><td>Symbols</td><td>Texture only, at low contrast. Never needed to understand the content</td><td><code>☉ ∫ λ H₂O</code></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- VIII PATTERNS -->
+<section class="plate" id="patterns">
+  <div class="rail"><span class="label">Plate VIII</span><span class="spec">Patterns</span></div>
+  <div class="content">
+    <h2>Fields and grids</h2>
+    <div class="grid pat">
+      <div class="panel"><img src="patterns/shape-field-paper.svg" alt="Shape field pattern on paper"><div class="cap"><b>Shape field · paper</b><span>patterns/shape-field-paper.svg · keep the centre empty for one big word</span></div></div>
+      <div class="panel"><img src="patterns/shape-field-blueprint.svg" alt="Shape field pattern on blueprint"><div class="cap"><b>Shape field · blueprint</b><span>patterns/shape-field-blueprint.svg</span></div></div>
+    </div>
+    <div class="grid-s">
+      <div class="panel"><div class="tile" style="background:url(patterns/blueprint-grid.svg)"></div><div class="cap"><b>Blueprint grid</b><span>80 px tile, 16 px minor</span></div></div>
+      <div class="panel"><div class="tile" style="background:url(patterns/paper-grid.svg)"></div><div class="cap"><b>Paper grid</b><span>80 px tile, 16 px minor</span></div></div>
+      <div class="panel"><div class="tile" style="background:url(patterns/dot-grid.svg)"></div><div class="cap"><b>Dot grid</b><span>16 px tile</span></div></div>
+    </div>
+    <p class="muted">Engraved textures (Haeckel plates, botany, star charts) sit behind content at about 15% contrast and are never the subject. Use public-domain sources only.</p>
+  </div>
+</section>
+
+<!-- IX MOTION -->
+<section class="plate" id="motion">
+  <div class="rail"><span class="label">Plate IX</span><span class="spec">Motion</span></div>
+  <div class="content">
+    <h2>How the brand moves</h2>
+    <ul class="rules">
+      <li data-k="01">Shapes snap in with hard edges and settle with a spring. No blur, no glass, no fades longer than 240 ms.</li>
+      <li data-k="02">Groups stagger by 40 ms. Big words move once; small labels keep moving around them.</li>
+      <li data-k="03">Every animation respects <span class="spec">prefers-reduced-motion</span> and has a designed still state.</li>
+      <li data-k="04">Every easing is shown as a plotted curve in the docs.</li>
+    </ul>
+    <div class="grid">
+      <div class="panel curve">
+        <svg viewBox="0 0 340 250" role="img" aria-label="Spring easing curve">
+          <line x1="40" y1="60" x2="300" y2="60" stroke="var(--line)" stroke-dasharray="3 4"/>
+          <line x1="40" y1="210" x2="310" y2="210" stroke="var(--fg)"/><line x1="40" y1="210" x2="40" y2="20" stroke="var(--fg)"/>
+          <path d="M40 210 C128.4 -24 206.4 60 300 60" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+          <g font-size="11" fill="var(--muted)"><text x="304" y="226">t</text><text x="16" y="22">ƒ(t)</text><text x="18" y="64">1.0</text><text x="44" y="240">spring · [ .34, 1.56, .64, 1 ]</text></g>
+        </svg>
+        <div class="lane" aria-hidden="true"><i style="animation-timing-function:cubic-bezier(.34,1.56,.64,1)"></i></div>
+        <div class="cap"><b>--u-ease-spring</b><span>Entrances, morphs, the logo.</span></div>
+      </div>
+      <div class="panel curve">
+        <svg viewBox="0 0 340 250" role="img" aria-label="Out easing curve">
+          <line x1="40" y1="60" x2="300" y2="60" stroke="var(--line)" stroke-dasharray="3 4"/>
+          <line x1="40" y1="210" x2="310" y2="210" stroke="var(--fg)"/><line x1="40" y1="210" x2="40" y2="20" stroke="var(--fg)"/>
+          <path d="M40 210 C81.6 60 118 60 300 60" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+          <g font-size="11" fill="var(--muted)"><text x="304" y="226">t</text><text x="16" y="22">ƒ(t)</text><text x="18" y="64">1.0</text><text x="44" y="240">out · [ .16, 1, .3, 1 ]</text></g>
+        </svg>
+        <div class="lane" aria-hidden="true"><i style="animation-timing-function:cubic-bezier(.16,1,.3,1)"></i></div>
+        <div class="cap"><b>--u-ease-out</b><span>UI responses, panels, hovers.</span></div>
+      </div>
+    </div>
+    <div class="tbl"><table>
+      <thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td><code>--u-dur-instant</code></td><td><code>120ms</code></td><td>Hover, press</td></tr>
+        <tr><td><code>--u-dur-quick</code></td><td><code>240ms</code></td><td>Shapes in and out, small UI</td></tr>
+        <tr><td><code>--u-dur-base</code></td><td><code>400ms</code></td><td>Morphs, panels</td></tr>
+        <tr><td><code>--u-dur-slow</code></td><td><code>700ms</code></td><td>Big words, section reveals</td></tr>
+        <tr><td><code>--u-dur-ambient</code></td><td><code>4800ms</code></td><td>Background loops, logo cycle</td></tr>
+        <tr><td><code>--u-ease-in-out</code></td><td><code>cubic-bezier(.65,0,.35,1)</code></td><td>Loops and position changes</td></tr>
+        <tr><td><code>--u-stagger</code></td><td><code>40ms</code></td><td>Delay between items in a group</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- X FILES -->
+<section class="plate" id="files">
+  <div class="rail"><span class="label">Plate X</span><span class="spec">Files</span></div>
+  <div class="content">
+    <h2>The kit</h2>
+<pre class="files">uinimate-brand/
+├── brand-guide.html          this page
+├── tokens/
+│   ├── tokens.css            CSS custom properties (--u-*)
+│   └── tokens.json           same values for any tool or model
+├── logo/
+│   └── uinimate-logo.css     living-i logo, HTML + CSS
+├── icon/
+│   ├── uinimate-icon.svg                   still · paper
+│   ├── uinimate-icon-blueprint.svg         still · blueprint
+│   ├── uinimate-icon-animated.svg          animated · paper
+│   ├── uinimate-icon-animated-blueprint.svg
+│   ├── uinimate-app-icon.svg               512 px · blueprint
+│   └── uinimate-app-icon-paper.svg         512 px · paper
+└── patterns/
+    ├── shape-field-paper.svg  shape-field-blueprint.svg
+    └── blueprint-grid.svg  paper-grid.svg  dot-grid.svg</pre>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var base=[["Paper","paper","#f5f8ef","oklch(0.975 0.012 120)","Light background"],["Paper 2","paper-2","#ecf0e4","oklch(0.948 0.016 120)","Surfaces on paper"],
+    ["Ink","ink","#142030","oklch(0.24 0.035 255)","Text and lines on paper"],["Muted","muted","#515f6e","oklch(0.48 0.03 250)","Secondary text"],
+    ["Rule","rule","#c3d5d6","oklch(0.86 0.02 200)","Hairlines"],["Blueprint","blueprint","#143463","oklch(0.33 0.09 258)","Dark background"],
+    ["Blueprint 2","blueprint-2","#0a254d","oklch(0.27 0.08 258)","Surfaces on blueprint"],["Chalk","chalk","#e3f1fb","oklch(0.95 0.02 240)","Text and lines on blueprint"],
+    ["Chalk muted","chalk-muted","#a3bbd0","oklch(0.78 0.04 245)","Secondary text on blueprint"]];
+  var names=["rose","coral","apricot","butter","lime","mint","jade","aqua","sky","iris","lilac","orchid"];
+  var ring=["#feacc5","#ffafa1","#f8b884","#e0c579","#bfd186","#98daa5","#77ddca","#71d9eb","#89d0ff","#aec5ff","#d1b9ff","#edb0e6"];
+  var deep=["#c26e89","#c67164","#bd7b41","#a68931","#849644","#579f68","#1ea28f","#059eb1","#4494c8","#7288cf","#977cc5","#b273ac"];
+  var b=document.getElementById("base");
+  base.forEach(function(c){
+    var d=document.createElement("div");d.className="sw";
+    d.innerHTML='<div class="chip" style="background:'+c[2]+'"></div><div class="t"><b>'+c[0]+'</b><span>--u-'+c[1]+'</span><span>'+c[2]+'</span><span>'+c[3]+'</span><span>'+c[4]+'</span></div>';
+    b.appendChild(d);
+  });
+  function fill(id,arr,L,C,txt){
+    var el=document.getElementById(id);
+    names.forEach(function(n,i){var d=document.createElement("div");d.className="c";d.style.background=arr[i];d.style.color=txt;
+      d.innerHTML="<span>"+n+"</span><span>"+arr[i]+"</span><span>h "+(i*30)+"°</span>";el.appendChild(d);});
+  }
+  fill("ring",ring,.83,.10,"#142030"); fill("deep",deep,.64,.11,"#142030");
+})();
+</script>

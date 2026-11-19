@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+*.log
+
+# generated from brand/ by apps/site/scripts/sync-brand.mjs
+apps/site/public/brand/
+
+# local working files (old drafts, superseded renders)
+brand/_archive/

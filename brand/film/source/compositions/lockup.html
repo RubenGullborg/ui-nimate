@@ -1,0 +1,154 @@
+<template>
+  <style>
+@font-face { font-family: "Newsreader"; src: url("assets/fonts/2124d331-8fd8-4fd7-babe-807135b0fc79.ttf"); font-weight: 200 800; font-style: normal; }
+#root { position:absolute; inset:0; overflow:hidden; background:#f5f8ef; font-family:"Space Mono", ui-monospace, monospace; }
+#root .el { position:absolute; opacity:0; box-sizing:border-box; }
+#root .blk { display:grid; place-items:center; }
+#root .glyph { font-family:"Space Mono", monospace; line-height:1; font-weight:400; }
+#root .chip { padding:6px 12px; line-height:1.25; white-space:nowrap; letter-spacing:.01em; }
+#root .word { display:flex; align-items:center; justify-content:center; font-family:"Newsreader", Georgia, serif; font-weight:500; font-variation-settings:"opsz" 72; letter-spacing:-.02em; line-height:1; white-space:nowrap; }
+#root svg.art { overflow:visible; }
+
+#root .pt, #root .pdot { position:absolute; display:block; }
+#root .pdot { width:12px; height:12px; border-radius:50%; background:#515f6e; opacity:0; }
+#root .u-logo { position:relative; display:inline-block; color:#142030; font-family:"Newsreader",Georgia,serif; font-weight:500; font-variation-settings:"opsz" 72; line-height:1; letter-spacing:-.015em; padding-bottom:.12em; }
+#root .u-logo__word, #root .u-logo__i { position:relative; display:inline-block; }
+#root .u-logo__i > i { position:absolute; left:50%; top:-.03em; width:.17em; height:.17em; margin-left:-.085em; background:#4494c8; }
+#root .u-logo__base { position:absolute; left:-.06em; right:-.06em; top:.79em; height:2px; background:#515f6e; opacity:.55; }
+#root .u-logo__base::before, #root .u-logo__base::after { content:""; position:absolute; top:-.05em; width:2px; height:.1em; background:#515f6e; }
+#root .u-logo__base::before { left:0 } #root .u-logo__base::after { right:0 }
+#root .u-logo__i::after { content:""; position:absolute; left:51%; top:.755em; width:2px; height:.07em; background:#515f6e; opacity:.7; }
+
+</style>
+  <div id="root" data-hf-id="hf-lockup-root" data-composition-id="lockup" data-width="1920" data-height="1080" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="lockup-grid" data-hf-id="hf-lockup-grid" class="el" data-off="2.60" data-on="0.00" style="left:120px;top:200px;width:380px;height:190px;background:#bfd186;z-index:4"></div>
+    <div id="lockup-grid2" data-hf-id="hf-lockup-grid2" class="el" data-off="2.60" data-on="0.45" style="left:120px;top:390px;width:380px;height:190px;background:#bfd186;z-index:4"></div>
+    <div id="lockup-grid3" data-hf-id="hf-lockup-grid3" class="el" data-off="2.60" data-on="1.05" style="left:500px;top:200px;width:380px;height:380px;background:#bfd186;z-index:4"></div>
+    <div id="lockup-l0" data-hf-id="hf-lockup-l0" class="el word" data-off="2.60" data-on="0.00" style="left:120px;top:200px;width:190px;height:190px;background:transparent;font-size:150px;z-index:6"><span data-hf-id="hf-lockup-l0-t" style="position:relative;display:inline-block">U</span></div>
+    <div id="lockup-l1" data-hf-id="hf-lockup-l1" class="el word" data-off="2.60" data-on="0.00" style="left:310px;top:200px;width:190px;height:190px;background:transparent;font-size:150px;z-index:6"><span data-hf-id="hf-lockup-l1-t" style="position:relative;display:inline-block">ı<i id="lockup-l1-dot" data-hf-id="hf-lockup-l1-dot" class="idot" style="position:absolute;left:50%;top:-.03em;width:.17em;height:.17em;margin-left:-.085em;background:#4494c8"></i></span></div>
+    <div id="lockup-l4" data-hf-id="hf-lockup-l4" class="el word" data-off="2.60" data-on="0.45" style="left:120px;top:390px;width:190px;height:190px;background:transparent;font-size:150px;z-index:6"><span data-hf-id="hf-lockup-l4-t" style="position:relative;display:inline-block">m</span></div>
+    <div id="lockup-l2" data-hf-id="hf-lockup-l2" class="el word" data-off="2.60" data-on="1.05" style="left:500px;top:200px;width:190px;height:190px;background:transparent;font-size:150px;z-index:6"><span data-hf-id="hf-lockup-l2-t" style="position:relative;display:inline-block">n</span></div>
+    <div id="lockup-l5" data-hf-id="hf-lockup-l5" class="el word" data-off="2.60" data-on="1.05" style="left:310px;top:390px;width:190px;height:190px;background:transparent;font-size:150px;z-index:6"><span data-hf-id="hf-lockup-l5-t" style="position:relative;display:inline-block">a</span></div>
+    <div id="lockup-l3" data-hf-id="hf-lockup-l3" class="el word" data-off="2.60" data-on="1.15" style="left:690px;top:200px;width:190px;height:190px;background:transparent;font-size:150px;z-index:6"><span data-hf-id="hf-lockup-l3-t" style="position:relative;display:inline-block">ı<i id="lockup-l3-dot" data-hf-id="hf-lockup-l3-dot" class="idot" style="position:absolute;left:50%;top:-.03em;width:.17em;height:.17em;margin-left:-.085em;background:#c67164"></i></span></div>
+    <div id="lockup-l6" data-hf-id="hf-lockup-l6" class="el word" data-off="2.60" data-on="1.25" style="left:500px;top:390px;width:190px;height:190px;background:transparent;font-size:150px;z-index:6"><span data-hf-id="hf-lockup-l6-t" style="position:relative;display:inline-block">t</span></div>
+    <div id="lockup-l7" data-hf-id="hf-lockup-l7" class="el word" data-off="2.60" data-on="1.35" style="left:690px;top:390px;width:190px;height:190px;background:transparent;font-size:150px;z-index:6"><span data-hf-id="hf-lockup-l7-t" style="position:relative;display:inline-block">e</span></div>
+    <div id="lockup-w1" data-hf-id="hf-lockup-w1" class="el word" style="left:90px;top:370px;width:300px;height:210px;background:#bfd186;color:#142030;font-size:130px;font-style:normal;z-index:7" data-on="0.00" data-off="0.45"><span data-hf-id="hf-lockup-w1-t" id="lockup-w1-t" data-var-text="lockup-w1">by</span></div>
+    <div id="lockup-w2" data-hf-id="hf-lockup-w2" class="el word" style="left:350px;top:430px;width:760px;height:210px;background:#bfd186;color:#142030;font-size:130px;font-style:normal;z-index:7" data-on="0.55" data-off="1.05"><span data-hf-id="hf-lockup-w2-t" id="lockup-w2-t" data-var-text="lockup-w2">Uinimate</span></div>
+    <div id="lockup-b3" data-hf-id="hf-lockup-b3" class="el blk" style="left:1560px;top:120px;width:160px;height:50px;background:#ffafa1;z-index:2" data-on="0.00" data-off="2.60" data-pop="1"></div>
+    <div id="lockup-c4" data-hf-id="hf-lockup-c4" class="el chip" style="left:760px;top:560px;background:#ffafa1;color:#142030;font-size:15px;z-index:6" data-on="0.10" data-off="1.20">Uinimate 0.1</div>
+    <div id="lockup-c5" data-hf-id="hf-lockup-c5" class="el chip" style="left:760px;top:594px;background:#d1b9ff;color:#142030;font-size:15px;z-index:6" data-on="0.15" data-off="1.20">[  OK  ]</div>
+    <div id="lockup-c6" data-hf-id="hf-lockup-c6" class="el chip" style="left:760px;top:630px;background:#d1b9ff;color:#142030;font-size:15px;z-index:6" data-on="0.20" data-off="1.20">[  OK  ]</div>
+    <div id="lockup-c7" data-hf-id="hf-lockup-c7" class="el chip" style="left:760px;top:666px;background:#d1b9ff;color:#142030;font-size:15px;z-index:6" data-on="0.25" data-off="1.20">[  OK  ]</div>
+    <div id="lockup-c8" data-hf-id="hf-lockup-c8" class="el chip" style="left:760px;top:702px;background:#d1b9ff;color:#142030;font-size:15px;z-index:6" data-on="0.30" data-off="1.20">[  OK  ]</div>
+    <div id="lockup-c9" data-hf-id="hf-lockup-c9" class="el chip" style="left:900px;top:594px;background:#aec5ff;color:#142030;font-size:15px;z-index:6" data-on="0.20" data-off="1.20">Mounted</div>
+    <div id="lockup-c10" data-hf-id="hf-lockup-c10" class="el chip" style="left:900px;top:635px;background:#aec5ff;color:#142030;font-size:15px;z-index:6" data-on="0.24" data-off="1.20">Mounted</div>
+    <div id="lockup-c11" data-hf-id="hf-lockup-c11" class="el chip" style="left:900px;top:676px;background:#aec5ff;color:#142030;font-size:15px;z-index:6" data-on="0.28" data-off="1.20">Started</div>
+    <div id="lockup-c12" data-hf-id="hf-lockup-c12" class="el chip" style="left:900px;top:717px;background:#aec5ff;color:#142030;font-size:15px;z-index:6" data-on="0.32" data-off="1.20">Started</div>
+    <div id="lockup-c13" data-hf-id="hf-lockup-c13" class="el chip" style="left:1080px;top:594px;background:#d1b9ff;color:#142030;font-size:15px;z-index:6" data-on="0.30" data-off="1.20">/</div>
+    <div id="lockup-c14" data-hf-id="hf-lockup-c14" class="el chip" style="left:1080px;top:635px;background:#d1b9ff;color:#142030;font-size:15px;z-index:6" data-on="0.34" data-off="1.20">/</div>
+    <div id="lockup-c15" data-hf-id="hf-lockup-c15" class="el chip" style="left:1120px;top:594px;background:#aec5ff;color:#142030;font-size:15px;z-index:6" data-on="0.35" data-off="1.20">css</div>
+    <div id="lockup-c16" data-hf-id="hf-lockup-c16" class="el chip" style="left:1120px;top:635px;background:#aec5ff;color:#142030;font-size:15px;z-index:6" data-on="0.39" data-off="1.20">svg</div>
+    <div id="lockup-c17" data-hf-id="hf-lockup-c17" class="el chip" style="left:1120px;top:676px;background:#aec5ff;color:#142030;font-size:15px;z-index:6" data-on="0.43" data-off="1.20">Spring Service</div>
+    <div id="lockup-c18" data-hf-id="hf-lockup-c18" class="el chip" style="left:1120px;top:717px;background:#aec5ff;color:#142030;font-size:15px;z-index:6" data-on="0.47" data-off="1.20">Shape Manager</div>
+    <div id="lockup-b19" data-hf-id="hf-lockup-b19" class="el blk" style="left:560px;top:820px;width:240px;height:60px;background:#7288cf;z-index:2" data-on="0.10" data-off="1.20"></div>
+    <div id="lockup-b20" data-hf-id="hf-lockup-b20" class="el blk" style="left:1660px;top:470px;width:120px;height:30px;background:#bfd186;z-index:2" data-on="0.60" data-off="2.60" data-pop="1"></div>
+    <div id="lockup-field21" data-hf-id="hf-lockup-field21" class="el" style="left:0;top:0;width:1920px;height:1080px;background:#143463;z-index:3" data-on="1.20" data-off="1.45"></div>
+    <div id="lockup-b22" data-hf-id="hf-lockup-b22" class="el blk" style="left:1100px;top:560px;width:200px;height:160px;background:#d1b9ff;z-index:5" data-on="1.20" data-off="1.45" data-pop="1"></div>
+    <div id="lockup-b23" data-hf-id="hf-lockup-b23" class="el blk" style="left:1480px;top:300px;width:100px;height:40px;background:#bfd186;z-index:5" data-on="1.25" data-off="1.45" data-pop="1"></div>
+    <div id="lockup-b24" data-hf-id="hf-lockup-b24" class="el blk" style="left:1220px;top:860px;width:360px;height:80px;background:#d1b9ff;z-index:5" data-on="1.30" data-off="1.45" data-pop="1"></div>
+    <div id="lockup-b25" data-hf-id="hf-lockup-b25" class="el blk" style="left:1040px;top:520px;width:50px;height:50px;background:#ffafa1;z-index:7" data-on="1.45" data-off="2.60"><span class="glyph" style="color:#142030;font-size:35px">+</span></div>
+    <div id="lockup-name" data-hf-id="hf-lockup-name" class="el word" style="left:1040px;top:580px;width:260px;height:80px;background:#142030;color:#bfd186;font-size:50px;font-style:normal;z-index:7" data-on="1.45" data-off="2.60"><span data-hf-id="hf-lockup-name-t" id="lockup-name-t" data-var-text="lockup-name">Uinimate</span></div>
+    <div id="lockup-tag" data-hf-id="hf-lockup-tag" class="el word" style="left:1300px;top:580px;width:520px;height:80px;background:#e0c579;color:#142030;font-size:46px;font-style:normal;z-index:7" data-on="1.48" data-off="2.60"><span data-hf-id="hf-lockup-tag-t" id="lockup-tag-t" data-var-text="lockup-tag">Motion for any stack</span></div>
+    <div id="lockup-c26" data-hf-id="hf-lockup-c26" class="el chip" style="left:1040px;top:690px;background:#142030;color:#f5f8ef;font-size:18px;z-index:6" data-on="1.60" data-off="2.60">No</div>
+    <div id="lockup-c27" data-hf-id="hf-lockup-c27" class="el chip" style="left:1104px;top:690px;background:#bfd186;color:#142030;font-size:18px;z-index:6" data-on="1.66" data-off="2.60">dependencies</div>
+    <div id="lockup-c28" data-hf-id="hf-lockup-c28" class="el chip" style="left:1279px;top:690px;background:#d1b9ff;color:#142030;font-size:18px;z-index:6" data-on="1.72" data-off="2.60">&</div>
+    <div id="lockup-c29" data-hf-id="hf-lockup-c29" class="el chip" style="left:1332px;top:690px;background:#bfd186;color:#142030;font-size:18px;z-index:6" data-on="1.78" data-off="2.60">any</div>
+    <div id="lockup-c30" data-hf-id="hf-lockup-c30" class="el chip" style="left:1407px;top:690px;background:#bfd186;color:#142030;font-size:18px;z-index:6" data-on="1.84" data-off="2.60">framework</div>
+    <div id="lockup-b31" data-hf-id="hf-lockup-b31" class="el blk" style="left:980px;top:590px;width:30px;height:30px;background:#77ddca;z-index:2" data-on="1.55" data-off="2.60"></div>
+    <div id="lockup-b32" data-hf-id="hf-lockup-b32" class="el blk" style="left:980px;top:640px;width:30px;height:30px;background:#77ddca;z-index:2" data-on="1.60" data-off="2.60"></div>
+    <div id="lockup-c33" data-hf-id="hf-lockup-c33" class="el chip" style="left:120px;top:620px;background:transparent;color:#515f6e;font-size:16px;z-index:6" data-on="1.80" data-off="2.60">Specimen U-001 · uinimate</div>
+    <div id="lockup-icon" data-hf-id="hf-lockup-icon" class="el" data-on="2.60" style="left:720px;top:300px;width:480px;height:480px;z-index:10"><i id="lockup-p00" data-hf-id="hf-lockup-p00" class="pt" style="left:10px;top:10px;width:77px;height:77px;background:#4494c8;border-radius:50%"></i><i id="lockup-p01" data-hf-id="hf-lockup-p01" class="pdot" style="left:138px;top:42px"></i><i id="lockup-p02" data-hf-id="hf-lockup-p02" class="pdot" style="left:234px;top:42px"></i><i id="lockup-p03" data-hf-id="hf-lockup-p03" class="pdot" style="left:330px;top:42px"></i><i id="lockup-p04" data-hf-id="hf-lockup-p04" class="pt" style="left:394px;top:10px;width:77px;height:77px;background:#c67164;"></i><i id="lockup-p10" data-hf-id="hf-lockup-p10" class="pt" style="left:5px;top:101px;width:86px;height:86px;background:#579f68;clip-path:polygon(50% 2%,100% 96%,0 96%)"></i><i id="lockup-p11" data-hf-id="hf-lockup-p11" class="pdot" style="left:138px;top:138px"></i><i id="lockup-p12" data-hf-id="hf-lockup-p12" class="pdot" style="left:234px;top:138px"></i><i id="lockup-p13" data-hf-id="hf-lockup-p13" class="pdot" style="left:330px;top:138px"></i><i id="lockup-p14" data-hf-id="hf-lockup-p14" class="pt" style="left:394px;top:106px;width:77px;height:77px;background:#977cc5;clip-path:polygon(25% 4%,75% 4%,100% 50%,75% 96%,25% 96%,0 50%)"></i><i id="lockup-p20" data-hf-id="hf-lockup-p20" class="pt" style="left:10px;top:202px;width:77px;height:77px;background:#a68931;clip-path:polygon(50% 2%,98% 38%,80% 98%,20% 98%,2% 38%)"></i><i id="lockup-p21" data-hf-id="hf-lockup-p21" class="pdot" style="left:138px;top:234px"></i><i id="lockup-p22" data-hf-id="hf-lockup-p22" class="pdot" style="left:234px;top:234px"></i><i id="lockup-p23" data-hf-id="hf-lockup-p23" class="pdot" style="left:330px;top:234px"></i><i id="lockup-p24" data-hf-id="hf-lockup-p24" class="pt" style="left:394px;top:202px;width:77px;height:77px;background:#059eb1;"></i><i id="lockup-p30" data-hf-id="hf-lockup-p30" class="pt" style="left:10px;top:298px;width:77px;height:77px;background:#c26e89;border-radius:50%"></i><i id="lockup-p31" data-hf-id="hf-lockup-p31" class="pdot" style="left:138px;top:330px"></i><i id="lockup-p32" data-hf-id="hf-lockup-p32" class="pdot" style="left:234px;top:330px"></i><i id="lockup-p33" data-hf-id="hf-lockup-p33" class="pt" style="left:298px;top:298px;width:77px;height:77px;background:#849644;clip-path:polygon(25% 4%,75% 4%,100% 50%,75% 96%,25% 96%,0 50%)"></i><i id="lockup-p34" data-hf-id="hf-lockup-p34" class="pt" style="left:389px;top:293px;width:86px;height:86px;background:#7288cf;clip-path:polygon(50% 2%,100% 96%,0 96%)"></i><i id="lockup-p40" data-hf-id="hf-lockup-p40" class="pdot" style="left:42px;top:426px"></i><i id="lockup-p41" data-hf-id="hf-lockup-p41" class="pt" style="left:106px;top:394px;width:77px;height:77px;background:#bd7b41;clip-path:polygon(50% 2%,98% 38%,80% 98%,20% 98%,2% 38%)"></i><i id="lockup-p42" data-hf-id="hf-lockup-p42" class="pt" style="left:202px;top:394px;width:77px;height:77px;background:#1ea28f;border-radius:50%"></i><i id="lockup-p43" data-hf-id="hf-lockup-p43" class="pt" style="left:298px;top:394px;width:77px;height:77px;background:#b273ac;"></i><i id="lockup-p44" data-hf-id="hf-lockup-p44" class="pdot" style="left:426px;top:426px"></i></div>
+    <div id="lockup-mark" data-hf-id="hf-lockup-mark" class="el" data-on="4.50" style="left:0;top:700px;width:1920px;height:230px;z-index:10;text-align:center">
+      <span id="lockup-logo" data-hf-id="hf-lockup-logo" class="u-logo" style="font-size:150px"><span class="u-logo__word" data-hf-id="hf-lockup-logo-w">U<span class="u-logo__i" data-hf-id="hf-lockup-logo-i1">ı<i id="lockup-logo-d1" data-hf-id="hf-lockup-logo-d1"></i></span>n<span class="u-logo__i" data-hf-id="hf-lockup-logo-i2">ı<i id="lockup-logo-d2" data-hf-id="hf-lockup-logo-d2"></i></span>mate</span><span class="u-logo__base" data-hf-id="hf-lockup-logo-b"></span></span>
+    </div>
+    <div id="lockup-tagline" data-hf-id="hf-lockup-tagline" class="el" data-on="5.40" style="left:0;top:950px;width:1920px;text-align:center;font:26px 'Space Mono',monospace;color:#515f6e;letter-spacing:.04em;z-index:10"><span id="lockup-tagline-t" data-hf-id="hf-lockup-tagline-t">Motion for any stack · No dependencies</span></div>
+    <div id="lockup-wipe" data-hf-id="hf-lockup-wipe" class="el" data-on="7.50" style="left:0;top:0;width:1920px;height:1080px;background:#143463;z-index:20"></div>
+    <div id="lockup-corner" data-hf-id="hf-lockup-corner" class="el blk" data-on="8.10" style="left:0;top:0;width:72px;height:72px;background:#ffafa1;z-index:21"><span class="glyph" style="color:#142030;font-size:50px">×</span></div>
+  </div>
+  <script>
+(function () {
+  var scope = document.querySelectorAll('[data-composition-id="lockup"] .el');
+  var tl = gsap.timeline({ paused: true });
+  scope.forEach(function (el) {
+    var on = parseFloat(el.getAttribute("data-on"));
+    var off = el.getAttribute("data-off");
+    tl.set(el, { opacity: 1 }, on);
+    if (el.getAttribute("data-pop")) tl.fromTo(el, { scale: 0.55 }, { scale: 1, duration: 0.26, ease: "back.out(2.4)" }, on);
+    if (off !== null) tl.set(el, { opacity: 0 }, parseFloat(off));
+  });
+
+  var shapes = ["polygon(0 0,100% 0,100% 100%,0 100%,0 0,0 0)", "polygon(50% 0,50% 0,100% 100%,100% 100%,0 100%,0 100%)",
+                "polygon(25% 7%,75% 7%,100% 50%,75% 93%,25% 93%,0 50%)", "polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%)"];
+  var cols1 = ["#4494c8", "#c67164", "#579f68", "#977cc5"], cols2 = ["#579f68", "#977cc5", "#4494c8", "#c67164"];
+  ["lockup-l1-dot", "lockup-l3-dot"].forEach(function (id, j) {
+    var el = document.getElementById(id); if (!el) return;
+    var cols = j ? cols2 : cols1;
+    tl.set(el, { clipPath: shapes[j ? 1 : 0], backgroundColor: cols[0] }, 0);
+    for (var s = 1; s < 8; s++) {
+      var t = 0.4 + s * 0.42 + j * 0.21;
+      tl.to(el, { clipPath: shapes[(s + (j ? 1 : 0)) % 4], backgroundColor: cols[s % 4], y: -6, duration: 0.18, ease: "back.out(2.4)" }, t);
+      tl.to(el, { y: 0, duration: 0.14, ease: "power2.in" }, t + 0.18);
+    }
+  });
+
+  // finale: particles gather into the standalone U icon
+  tl.fromTo("#lockup-p00", { x: 288, y: 116, rotation: 180, scale: 0.6 }, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.9, ease: "back.out(1.5)" }, 2.60);
+  tl.to("#lockup-p00", { x: -948, y: -347, rotation: -180, scale: 0, duration: 0.6, ease: "power2.in" }, 7.350);
+  tl.fromTo("#lockup-p04", { x: 704, y: -272, rotation: -90, scale: 0.6 }, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.9, ease: "back.out(1.5)" }, 2.64);
+  tl.to("#lockup-p04", { x: 714, y: -437, rotation: 90, scale: 0, duration: 0.6, ease: "power2.in" }, 7.365);
+  tl.fromTo("#lockup-p10", { x: -109, y: -305, rotation: -90, scale: 0.6 }, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.9, ease: "back.out(1.5)" }, 2.68);
+  tl.to("#lockup-p10", { x: -672, y: -577, rotation: 90, scale: 0, duration: 0.6, ease: "power2.in" }, 7.380);
+  tl.fromTo("#lockup-p14", { x: 753, y: 233, rotation: 180, scale: 0.6 }, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.9, ease: "back.out(1.5)" }, 2.72);
+  tl.to("#lockup-p14", { x: 851, y: -305, rotation: -180, scale: 0, duration: 0.6, ease: "power2.in" }, 7.395);
+  tl.fromTo("#lockup-p20", { x: -4, y: -330, rotation: 90, scale: 0.6 }, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.9, ease: "back.out(1.5)" }, 2.76);
+  tl.to("#lockup-p20", { x: -795, y: 127, rotation: -90, scale: 0, duration: 0.6, ease: "power2.in" }, 7.410);
+  tl.fromTo("#lockup-p24", { x: 469, y: -413, rotation: -90, scale: 0.6 }, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.9, ease: "back.out(1.5)" }, 2.80);
+  tl.to("#lockup-p24", { x: 885, y: -267, rotation: 90, scale: 0, duration: 0.6, ease: "power2.in" }, 7.425);
+  tl.fromTo("#lockup-p30", { x: -476, y: -398, rotation: -90, scale: 0.6 }, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.9, ease: "back.out(1.5)" }, 2.84);
+  tl.to("#lockup-p30", { x: -730, y: 295, rotation: 90, scale: 0, duration: 0.6, ease: "power2.in" }, 7.440);
+  tl.fromTo("#lockup-p33", { x: 460, y: 136, rotation: -180, scale: 0.6 }, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.9, ease: "back.out(1.5)" }, 2.88);
+  tl.to("#lockup-p33", { x: 480, y: 569, rotation: 180, scale: 0, duration: 0.6, ease: "power2.in" }, 7.455);
+  tl.fromTo("#lockup-p34", { x: -454, y: 364, rotation: 180, scale: 0.6 }, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.9, ease: "back.out(1.5)" }, 2.92);
+  tl.to("#lockup-p34", { x: 624, y: 562, rotation: -180, scale: 0, duration: 0.6, ease: "power2.in" }, 7.470);
+  tl.fromTo("#lockup-p41", { x: -277, y: -13, rotation: 90, scale: 0.6 }, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.9, ease: "back.out(1.5)" }, 2.96);
+  tl.to("#lockup-p41", { x: -362, y: 553, rotation: -90, scale: 0, duration: 0.6, ease: "power2.in" }, 7.485);
+  tl.fromTo("#lockup-p42", { x: 749, y: -3, rotation: 180, scale: 0.6 }, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.9, ease: "back.out(1.5)" }, 3.00);
+  tl.to("#lockup-p42", { x: -178, y: 703, rotation: -180, scale: 0, duration: 0.6, ease: "power2.in" }, 7.500);
+  tl.fromTo("#lockup-p43", { x: 109, y: -156, rotation: -180, scale: 0.6 }, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.9, ease: "back.out(1.5)" }, 3.04);
+  tl.to("#lockup-p43", { x: 365, y: 573, rotation: 180, scale: 0, duration: 0.6, ease: "power2.in" }, 7.515);
+  tl.fromTo(["#lockup-p01", "#lockup-p02", "#lockup-p03", "#lockup-p11", "#lockup-p12", "#lockup-p13", "#lockup-p21", "#lockup-p22", "#lockup-p23", "#lockup-p31", "#lockup-p32", "#lockup-p40", "#lockup-p44"].join(","), { opacity: 0 }, { opacity: 0.35, duration: 0.4 }, 3.4);
+  tl.to(["#lockup-p01", "#lockup-p02", "#lockup-p03", "#lockup-p11", "#lockup-p12", "#lockup-p13", "#lockup-p21", "#lockup-p22", "#lockup-p23", "#lockup-p31", "#lockup-p32", "#lockup-p40", "#lockup-p44"].join(","), { opacity: 0, duration: 0.25 }, 7.3);
+  tl.fromTo("#lockup-icon", { y: 0 }, { y: -140, duration: 1.1, ease: "power2.inOut" }, 4.3);
+  tl.fromTo("#lockup-logo", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.3, ease: "power2.out" }, 4.5);
+  tl.fromTo("#lockup-tagline-t", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power1.out" }, 5.4);
+  tl.to(["#lockup-logo", "#lockup-tagline-t"], { opacity: 0, y: -20, duration: 0.35, ease: "power2.in" }, 7.25);
+  tl.fromTo("#lockup-wipe", { clipPath: "circle(0% at 50% 40%)" }, { clipPath: "circle(80% at 50% 40%)", duration: 0.6, ease: "power2.inOut" }, 7.5);
+  var lshapes = ["polygon(0 0,100% 0,100% 100%,0 100%,0 0,0 0)", "polygon(50% 0,50% 0,100% 100%,100% 100%,0 100%,0 100%)",
+                "polygon(25% 7%,75% 7%,100% 50%,75% 93%,25% 93%,0 50%)", "polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%)"];
+  var lc1 = ["#4494c8", "#c67164", "#579f68", "#977cc5"], lc2 = ["#579f68", "#977cc5", "#4494c8", "#c67164"];
+  ["lockup-logo-d1", "lockup-logo-d2"].forEach(function (id, j) {
+    var el = document.getElementById(id); if (!el) return;
+    var cols = j ? lc2 : lc1;
+    tl.set(el, { clipPath: lshapes[j ? 2 : 0], backgroundColor: cols[0] }, 0);
+    for (var s = 1; s < 6; s++) {
+      var t = 5.0 + s * 0.48 + j * 0.24;
+      tl.to(el, { clipPath: lshapes[(s + (j ? 2 : 0)) % 4], backgroundColor: cols[s % 4], y: -8, duration: 0.2, ease: "back.out(2.4)" }, t);
+      tl.to(el, { y: 0, duration: 0.16, ease: "power2.in" }, t + 0.2);
+    }
+  });
+
+  tl.set({}, {}, 8.3);
+  window.__timelines["lockup"] = tl;
+})();
+</script>
+</template>

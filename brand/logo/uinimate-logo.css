@@ -1,0 +1,57 @@
+/* Uinimate living-i logo. Dependency-free: HTML + CSS only.
+   Markup:
+   <span class="u-logo" role="img" aria-label="Uinimate">
+     <span class="u-logo__word" aria-hidden="true">U<span class="u-logo__i">ı<i></i></span>n<span class="u-logo__i u-logo__i--2">ı<i></i></span>mate</span>
+     <span class="u-logo__base" aria-hidden="true"></span>
+   </span>
+   Size it with font-size. Add .u-logo--blueprint on dark (blueprint) backgrounds.
+   Add .u-logo--still to stop the motion (print, favicons, small sizes). */
+.u-logo{
+  --u-logo-ink:#142030;
+  --u-logo-rule:#515f6e;
+  --u-logo-a1:#4494c8; --u-logo-a2:#c67164; --u-logo-a3:#579f68; --u-logo-a4:#977cc5; --u-logo-a5:#a68931;
+  --u-logo-dot:.17em; --u-logo-dot-y:-.03em; /* tuned to Newsreader: ascent .74em, ı top .21em */
+  position:relative;display:inline-block;color:var(--u-logo-ink);
+  font-family:"Newsreader",Georgia,"Times New Roman",serif;font-weight:500;
+  font-variation-settings:"opsz" 72;line-height:1;letter-spacing:-.015em;
+  padding-bottom:.12em;
+}
+.u-logo--blueprint{
+  --u-logo-ink:#e3f1fb;--u-logo-rule:#a9bfd6;
+  --u-logo-a1:#89d0ff;--u-logo-a2:#ffafa1;--u-logo-a3:#98daa5;--u-logo-a4:#d1b9ff;--u-logo-a5:#e0c579;
+}
+.u-logo__word{position:relative;display:inline-block}
+.u-logo__i{position:relative;display:inline-block}
+.u-logo__i>i{
+  position:absolute;left:50%;top:var(--u-logo-dot-y);
+  width:var(--u-logo-dot);height:var(--u-logo-dot);margin-left:calc(var(--u-logo-dot) / -2);
+  background:var(--u-logo-a1);
+  clip-path:polygon(50% 0%,78.9% 0%,100% 21.1%,100% 50%,100% 78.9%,78.9% 100%,50% 100%,21.1% 100%,0% 78.9%,0% 50%,0% 21.1%,21.1% 0%);
+  animation:u-logo-morph 6s infinite;
+}
+.u-logo__i--2>i{animation-delay:-3s}
+/* Construction detail: a baseline hairline with measuring ticks under both i's */
+.u-logo__base{
+  position:absolute;left:-.06em;right:-.06em;top:.79em;height:1px;background:var(--u-logo-rule);opacity:.55;
+}
+.u-logo__base::before,.u-logo__base::after{content:"";position:absolute;top:-.05em;width:1px;height:.1em;background:var(--u-logo-rule)}
+.u-logo__base::before{left:0}.u-logo__base::after{right:0}
+.u-logo__i::after{content:"";position:absolute;left:51%;top:.755em;width:1px;height:.07em;background:var(--u-logo-rule);opacity:.7}
+
+@keyframes u-logo-morph{
+  0%{clip-path:polygon(50% 0%,78.9% 0%,100% 21.1%,100% 50%,100% 78.9%,78.9% 100%,50% 100%,21.1% 100%,0% 78.9%,0% 50%,0% 21.1%,21.1% 0%);transform:translateY(0) rotate(0);background:var(--u-logo-a1);animation-timing-function:cubic-bezier(.34,1.56,.64,1)}
+  16%{clip-path:polygon(50% 0%,78.9% 0%,100% 21.1%,100% 50%,100% 78.9%,78.9% 100%,50% 100%,21.1% 100%,0% 78.9%,0% 50%,0% 21.1%,21.1% 0%);transform:translateY(0) rotate(0);background:var(--u-logo-a1);animation-timing-function:cubic-bezier(.34,1.56,.64,1)}
+  24%{clip-path:polygon(50% 0%,63.6% 26.5%,69.8% 38.6%,75.6% 50%,86.4% 71%,77.4% 97.5%,50% 97.5%,22.6% 97.5%,13.6% 71%,24.4% 50%,30.2% 38.6%,36.4% 26.5%);transform:translateY(-.06em) rotate(0);background:var(--u-logo-a2);animation-timing-function:cubic-bezier(.34,1.56,.64,1)}
+  40%{clip-path:polygon(50% 0%,63.6% 26.5%,69.8% 38.6%,75.6% 50%,86.4% 71%,77.4% 97.5%,50% 97.5%,22.6% 97.5%,13.6% 71%,24.4% 50%,30.2% 38.6%,36.4% 26.5%);transform:translateY(-.06em) rotate(0);background:var(--u-logo-a2);animation-timing-function:cubic-bezier(.34,1.56,.64,1)}
+  48%{clip-path:polygon(50% 6.7%,75% 6.7%,87.5% 28.3%,100% 50%,87.5% 71.7%,75% 93.3%,50% 93.3%,25% 93.3%,12.5% 71.7%,0% 50%,12.5% 28.3%,25% 6.7%);transform:translateY(0) rotate(30deg);background:var(--u-logo-a3);animation-timing-function:cubic-bezier(.34,1.56,.64,1)}
+  64%{clip-path:polygon(50% 6.7%,75% 6.7%,87.5% 28.3%,100% 50%,87.5% 71.7%,75% 93.3%,50% 93.3%,25% 93.3%,12.5% 71.7%,0% 50%,12.5% 28.3%,25% 6.7%);transform:translateY(0) rotate(30deg);background:var(--u-logo-a3);animation-timing-function:cubic-bezier(.34,1.56,.64,1)}
+  72%{clip-path:polygon(50% 0%,75% 6.7%,93.3% 25%,100% 50%,93.3% 75%,75% 93.3%,50% 100%,25% 93.3%,6.7% 75%,0% 50%,6.7% 25%,25% 6.7%);transform:translateY(-.05em) rotate(30deg);background:var(--u-logo-a4);animation-timing-function:cubic-bezier(.34,1.56,.64,1)}
+  88%{clip-path:polygon(50% 0%,75% 6.7%,93.3% 25%,100% 50%,93.3% 75%,75% 93.3%,50% 100%,25% 93.3%,6.7% 75%,0% 50%,6.7% 25%,25% 6.7%);transform:translateY(-.05em) rotate(30deg);background:var(--u-logo-a4);animation-timing-function:cubic-bezier(.34,1.56,.64,1)}
+  96%,100%{clip-path:polygon(50% 0%,78.9% 0%,100% 21.1%,100% 50%,100% 78.9%,78.9% 100%,50% 100%,21.1% 100%,0% 78.9%,0% 50%,0% 21.1%,21.1% 0%);transform:translateY(0) rotate(90deg);background:var(--u-logo-a1)}
+}
+.u-logo--still .u-logo__i>i{animation:none}
+.u-logo--still .u-logo__i--2>i{background:var(--u-logo-a2)}
+@media (prefers-reduced-motion:reduce){
+  .u-logo__i>i{animation:none}
+  .u-logo__i--2>i{background:var(--u-logo-a2)}
+}

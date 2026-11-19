@@ -1,0 +1,15 @@
+{
+  "name": "@uinimate/site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync": "node scripts/sync-brand.mjs",
+    "dev": "node scripts/sync-brand.mjs && astro dev",
+    "build": "node scripts/sync-brand.mjs && astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "7.4.13",
+    "uinimate": "workspace:*"
+  }
+}

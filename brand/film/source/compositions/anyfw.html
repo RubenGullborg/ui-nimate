@@ -1,0 +1,62 @@
+<template>
+  <style>
+@font-face { font-family: "Newsreader"; src: url("assets/fonts/2124d331-8fd8-4fd7-babe-807135b0fc79.ttf"); font-weight: 200 800; font-style: normal; }
+#root { position:absolute; inset:0; overflow:hidden; background:#f5f8ef; font-family:"Space Mono", ui-monospace, monospace; }
+#root .el { position:absolute; opacity:0; box-sizing:border-box; }
+#root .blk { display:grid; place-items:center; }
+#root .glyph { font-family:"Space Mono", monospace; line-height:1; font-weight:400; }
+#root .chip { padding:6px 12px; line-height:1.25; white-space:nowrap; letter-spacing:.01em; }
+#root .word { display:flex; align-items:center; justify-content:center; font-family:"Newsreader", Georgia, serif; font-weight:500; font-variation-settings:"opsz" 72; letter-spacing:-.02em; line-height:1; white-space:nowrap; }
+#root svg.art { overflow:visible; }
+
+</style>
+  <div id="root" data-hf-id="hf-anyfw-root" data-composition-id="anyfw" data-width="1920" data-height="1080" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="anyfw-icon" data-hf-id="hf-anyfw-icon" class="el blk" data-on="0.00" data-off="0.70" data-pop="1" style="left:800px;top:300px;width:320px;height:320px;background:#e0c579;z-index:5"><svg data-hf-id="hf-anyfw-icon-svg" viewBox="0 0 120 120" width="250" height="250"><circle cx="12.0" cy="12.0" r="10.32" fill="#4494c8"/><circle cx="36.00" cy="12.00" r="1.68" fill="#515f6e"/><circle cx="60.00" cy="12.00" r="1.68" fill="#515f6e"/><circle cx="84.00" cy="12.00" r="1.68" fill="#515f6e"/><rect x="98.71" y="2.71" width="18.58" height="18.58" fill="#c67164"/><polygon points="12.00,25.68 22.37,43.64 1.63,43.64" fill="#579f68"/><circle cx="36.00" cy="36.00" r="1.68" fill="#515f6e"/><circle cx="60.00" cy="36.00" r="1.68" fill="#515f6e"/><circle cx="84.00" cy="36.00" r="1.68" fill="#515f6e"/><polygon points="118.73,36.00 113.37,45.29 102.63,45.29 97.27,36.00 102.63,26.71 113.37,26.71" fill="#977cc5"/><polygon points="12.00,49.68 22.40,57.24 18.43,69.47 5.57,69.47 1.60,57.24" fill="#a68931"/><circle cx="36.00" cy="60.00" r="1.68" fill="#515f6e"/><circle cx="60.00" cy="60.00" r="1.68" fill="#515f6e"/><circle cx="84.00" cy="60.00" r="1.68" fill="#515f6e"/><rect x="98.71" y="50.71" width="18.58" height="18.58" fill="#059eb1"/><circle cx="12.0" cy="84.0" r="10.32" fill="#c26e89"/><circle cx="36.00" cy="84.00" r="1.68" fill="#515f6e"/><circle cx="60.00" cy="84.00" r="1.68" fill="#515f6e"/><polygon points="94.73,84.00 89.37,93.29 78.63,93.29 73.27,84.00 78.63,74.71 89.37,74.71" fill="#849644"/><polygon points="108.00,73.68 118.37,91.64 97.63,91.64" fill="#7288cf"/><circle cx="12.00" cy="108.00" r="1.68" fill="#515f6e"/><polygon points="36.00,97.68 46.40,105.24 42.43,117.47 29.57,117.47 25.60,105.24" fill="#bd7b41"/><circle cx="60.0" cy="108.0" r="10.32" fill="#1ea28f"/><rect x="74.71" y="98.71" width="18.58" height="18.58" fill="#b273ac"/><circle cx="108.00" cy="108.00" r="1.68" fill="#515f6e"/>
+</svg></div>
+    <div id="anyfw-c1" data-hf-id="hf-anyfw-c1" class="el chip" style="left:1000px;top:140px;background:#d1b9ff;color:#142030;font-size:21px;z-index:6" data-on="0.10">[ 0.842119 ]</div>
+    <div id="anyfw-c2" data-hf-id="hf-anyfw-c2" class="el chip" style="left:1000px;top:187px;background:#d1b9ff;color:#142030;font-size:21px;z-index:6" data-on="0.14">[ 0.842684 ]</div>
+    <div id="anyfw-b3" data-hf-id="hf-anyfw-b3" class="el blk" style="left:1300px;top:140px;width:120px;height:120px;background:#d1b9ff;z-index:2" data-on="0.20" data-pop="1"></div>
+    <div id="anyfw-b4" data-hf-id="hf-anyfw-b4" class="el blk" style="left:1820px;top:320px;width:100px;height:40px;background:#ffafa1;z-index:2" data-on="0.25" data-pop="1"></div>
+    <div id="anyfw-b5" data-hf-id="hf-anyfw-b5" class="el blk" style="left:0px;top:760px;width:100px;height:60px;background:#77ddca;z-index:2" data-on="0.30" data-pop="1"></div>
+    <div id="anyfw-b6" data-hf-id="hf-anyfw-b6" class="el blk" style="left:1100px;top:960px;width:100px;height:100px;background:#c26e89;z-index:2" data-on="0.45" data-pop="1"></div>
+    <div id="anyfw-field7" data-hf-id="hf-anyfw-field7" class="el" style="left:0;top:0;width:1920px;height:1080px;background:#143463;z-index:3" data-on="0.70"></div>
+    <svg id="anyfw-grid" data-hf-id="hf-anyfw-grid" class="el" data-on="0.70" style="left:0;top:0;width:1920px;height:1080px;z-index:3"><defs><pattern id="anyfw-p" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M16 0V80M32 0V80M48 0V80M64 0V80M0 16H80M0 32H80M0 48H80M0 64H80" stroke="#e3f1fb" stroke-opacity=".08"/><path d="M0 .5H80M.5 0V80" stroke="#e3f1fb" stroke-opacity=".2"/></pattern></defs><rect width="1920" height="1080" fill="url(#anyfw-p)"/></svg>
+    <div id="anyfw-w8" data-hf-id="hf-anyfw-w8" class="el word" style="left:90px;top:430px;width:300px;height:300px;background:#bfd186;color:#142030;font-size:170px;font-style:normal;z-index:8" data-on="0.70" data-off="1.20"><span data-hf-id="hf-anyfw-w8-t" id="anyfw-w8-t" data-var-text="anyfw-w8">For</span></div>
+    <div id="anyfw-c9" data-hf-id="hf-anyfw-c9" class="el chip" style="left:820px;top:420px;background:#bfd186;color:#142030;font-size:21px;z-index:8" data-on="0.80">systemd</div>
+    <div id="anyfw-c10" data-hf-id="hf-anyfw-c10" class="el chip" style="left:820px;top:467px;background:#bfd186;color:#142030;font-size:21px;z-index:8" data-on="0.84">systemd</div>
+    <div id="anyfw-c11" data-hf-id="hf-anyfw-c11" class="el chip" style="left:820px;top:514px;background:#bfd186;color:#142030;font-size:21px;z-index:8" data-on="0.88">systemd</div>
+    <div id="anyfw-c12" data-hf-id="hf-anyfw-c12" class="el chip" style="left:1080px;top:420px;background:#d1b9ff;color:#142030;font-size:21px;z-index:8" data-on="0.85">[ 1 ]</div>
+    <div id="anyfw-c13" data-hf-id="hf-anyfw-c13" class="el chip" style="left:1080px;top:467px;background:#d1b9ff;color:#142030;font-size:21px;z-index:8" data-on="0.89">[ 1 ]</div>
+    <div id="anyfw-c14" data-hf-id="hf-anyfw-c14" class="el chip" style="left:1080px;top:514px;background:#d1b9ff;color:#142030;font-size:21px;z-index:8" data-on="0.93">[ 1 ]</div>
+    <div id="anyfw-b15" data-hf-id="hf-anyfw-b15" class="el blk" style="left:1460px;top:760px;width:160px;height:160px;background:#b273ac;z-index:8" data-on="0.80" data-pop="1"></div>
+    <div id="anyfw-b16" data-hf-id="hf-anyfw-b16" class="el blk" style="left:0px;top:980px;width:120px;height:60px;background:#77ddca;z-index:8" data-on="0.90"></div>
+    <div id="anyfw-code" data-hf-id="hf-anyfw-code" class="el blk" data-on="1.20" data-pop="1" style="left:110px;top:345px;width:180px;height:180px;background:#d1b9ff;z-index:8"><span class="glyph" style="color:#142030;font-size:58px">&lt;/&gt;</span></div>
+    <div id="anyfw-w17" data-hf-id="hf-anyfw-w17" class="el word" style="left:330px;top:260px;width:1300px;height:330px;background:#bfd186;color:#142030;font-size:180px;font-style:normal;z-index:9" data-on="1.20"><span data-hf-id="hf-anyfw-w17-t" id="anyfw-w17-t" data-var-text="anyfw-w17">any framework</span></div>
+    <div id="anyfw-b18" data-hf-id="hf-anyfw-b18" class="el blk" style="left:1700px;top:900px;width:30px;height:30px;background:#bfd186;z-index:8" data-on="1.30" data-pop="1"></div>
+    <div id="anyfw-c19" data-hf-id="hf-anyfw-c19" class="el chip" style="left:330px;top:660px;background:#bfd186;color:#142030;font-size:21px;z-index:8" data-on="1.40">Boot</div>
+    <div id="anyfw-c20" data-hf-id="hf-anyfw-c20" class="el chip" style="left:424px;top:660px;background:#d1b9ff;color:#142030;font-size:21px;z-index:8" data-on="1.44">CSS</div>
+    <div id="anyfw-c21" data-hf-id="hf-anyfw-c21" class="el chip" style="left:505px;top:660px;background:#bfd186;color:#142030;font-size:21px;z-index:8" data-on="1.48">/</div>
+    <div id="anyfw-c22" data-hf-id="hf-anyfw-c22" class="el chip" style="left:560px;top:660px;background:#d1b9ff;color:#142030;font-size:21px;z-index:8" data-on="1.52">SVG</div>
+    <div id="anyfw-c23" data-hf-id="hf-anyfw-c23" class="el chip" style="left:641px;top:660px;background:#bfd186;color:#142030;font-size:21px;z-index:8" data-on="1.56">/</div>
+    <div id="anyfw-c24" data-hf-id="hf-anyfw-c24" class="el chip" style="left:696px;top:660px;background:#d1b9ff;color:#142030;font-size:21px;z-index:8" data-on="1.60">HTML</div>
+    <div id="anyfw-c25" data-hf-id="hf-anyfw-c25" class="el chip" style="left:1500px;top:640px;background:#aec5ff;color:#142030;font-size:21px;z-index:8" data-on="1.60">Mounted</div>
+    <div id="anyfw-c26" data-hf-id="hf-anyfw-c26" class="el chip" style="left:1500px;top:687px;background:#aec5ff;color:#142030;font-size:21px;z-index:8" data-on="1.64">Started</div>
+    <div id="anyfw-b27" data-hf-id="hf-anyfw-b27" class="el blk" style="left:1400px;top:0px;width:120px;height:120px;background:#f8b884;z-index:8" data-on="1.50" data-pop="1"><span class="glyph" style="color:#142030;font-size:84px">+</span></div>
+  </div>
+  <script>
+(function () {
+  var scope = document.querySelectorAll('[data-composition-id="anyfw"] .el');
+  var tl = gsap.timeline({ paused: true });
+  scope.forEach(function (el) {
+    var on = parseFloat(el.getAttribute("data-on"));
+    var off = el.getAttribute("data-off");
+    tl.set(el, { opacity: 1 }, on);
+    if (el.getAttribute("data-pop")) tl.fromTo(el, { scale: 0.55 }, { scale: 1, duration: 0.26, ease: "back.out(2.4)" }, on);
+    if (off !== null) tl.set(el, { opacity: 0 }, parseFloat(off));
+  });
+
+  tl.set({}, {}, 2.2);
+  window.__timelines["anyfw"] = tl;
+})();
+</script>
+</template>

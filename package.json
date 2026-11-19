@@ -1,0 +1,14 @@
+{
+  "name": "ui-nimate",
+  "private": true,
+  "description": "Uinimate — a laboratory of animated UI components. Motion for any stack. No dependencies.",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter @uinimate/site dev",
+    "build": "pnpm -r build",
+    "preview": "pnpm --filter @uinimate/site preview"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
