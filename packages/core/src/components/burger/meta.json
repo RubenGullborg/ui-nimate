@@ -116,5 +116,8 @@
     "title": "One button, two jobs",
     "body": "In a nested mobile menu, switch the burger to the arrow variant while a submenu is open. The same button becomes a \"back\" button, and the turn between them tells people where they are.",
     "code": "// a submenu opened\nburger.dataset.variant = \"arrow\";\n// back at the top level\nburger.dataset.variant = \"cross\";"
+  },
+  "preview": {
+    "variant": "twist"
   }
 }

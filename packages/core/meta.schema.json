@@ -238,6 +238,10 @@
         },
         "width": {
           "type": "string"
+        },
+        "variant": {
+          "type": "string",
+          "description": "Variant shown on the components overview card."
         }
       }
     },

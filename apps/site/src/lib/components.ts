@@ -10,7 +10,7 @@ export interface Meta {
   status: "experimental" | "stable";
   support: { level: "baseline" | "experimental"; notes?: string };
   state: null | { attr: string; values: string[]; fallback?: string; fallbackValues?: string[]; selector?: string };
-  preview?: { zoom?: number; width?: string };
+  preview?: { zoom?: number; width?: string; variant?: string };
   attributes?: { attr: string; label: string; choices: { value: string; label: string; note?: string }[] }[];
   tip?: { title: string; body: string; code?: string };
   variants: { name: string; label: string }[];

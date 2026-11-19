@@ -121,5 +121,8 @@
     "title": "Start in the right mode",
     "body": "Read the visitor's system setting on first load, then let the toggle take over. Set aria-pressed before first paint and the icon starts in the right state without animating.",
     "code": "const dark = localStorage.theme\n  ? localStorage.theme === \"dark\"\n  : matchMedia(\"(prefers-color-scheme: dark)\").matches;\ntoggle.setAttribute(\"aria-pressed\", String(dark));"
+  },
+  "preview": {
+    "variant": "flip"
   }
 }

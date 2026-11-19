@@ -336,8 +336,9 @@ const frameworks = [
   document.getElementById("toggle")?.addEventListener("click", flip);
   stage.addEventListener("click", (e) => {
     if (!attr || values.length < 2) return;
-    // A single item: a click anywhere on the stage toggles it.
-    if (targets().length < 2) return flip();
+    // A single item (no state selector, or only one target per copy): a click anywhere toggles it.
+    const perCopy = targetSel ? (hosts()[0]?.querySelectorAll(targetSel).length ?? 0) : 1;
+    if (!targetSel || perCopy < 2) return flip();
     // Several items (e.g. a stack of disclosures): only a click on a trigger toggles that one item.
     // Clicks on open content or empty stage do nothing, so a near-miss never flips the whole stack.
     const hit = (e.target as HTMLElement).closest<HTMLElement>(targetSel);

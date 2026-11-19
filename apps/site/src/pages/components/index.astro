@@ -16,7 +16,7 @@ const next = `U-${String(Math.max(...components.map((c) => Number(c.id.slice(2))
       {components.map((c) => (
         <li class="card">
           <div class="stage" data-demo data-attr={c.state?.attr ?? ""} data-values={JSON.stringify(c.state?.values ?? [])} data-target={c.state?.selector ?? ""}>
-            <div class="zoom" style={`scale:${Math.min(2, (c.preview?.zoom ?? 2.5) * 0.8)}; width:${c.preview?.width ?? "auto"}`} set:html={c.html} />
+            <div class="zoom" style={`scale:${Math.min(2, (c.preview?.zoom ?? 2.5) * 0.8)}; width:${c.preview?.width ?? "auto"}`} set:html={c.preview?.variant ? c.html.replace(/^(\s*<[a-z]+\b)/, `$1 data-variant="${c.preview.variant}"`) : c.html} />
           </div>
           <a class="meta" href={`/components/${c.slug}`}>
             <span class="spec">Specimen {c.id} · {c.category}</span>
