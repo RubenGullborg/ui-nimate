@@ -1,0 +1,84 @@
+---
+import Base from "../layouts/Base.astro";
+// Single source of truth: the page renders the skill file from the repo at build time.
+import Skill, { frontmatter } from "../../../../skills/uinimate/SKILL.md";
+const github = "https://github.com/RubenGullborg/ui-nimate";
+const folder = `${github}/tree/main/skills/uinimate`;
+const raw = "https://raw.githubusercontent.com/RubenGullborg/ui-nimate/main/skills/uinimate/SKILL.md";
+---
+
+<Base title="Use with AI agents — Uinimate" description={frontmatter.description}>
+  <section class="wrap page">
+    <div class="head">
+      <span class="label">For AI agents</span>
+      <h1 class="display h1">Let your agent add it for you.</h1>
+      <p class="lede">The <code>uinimate</code> skill teaches Claude, Cursor, Codex and other coding agents how to fetch our components, wire them up in your framework and tune them to your design.</p>
+    </div>
+
+    <ol class="steps">
+      <li>
+        <span class="spec step-no">01</span>
+        <h3>Get the skill</h3>
+        <p>Download <a href={raw}>SKILL.md</a> or copy the <a href={folder}>skills/uinimate</a> folder from GitHub.</p>
+      </li>
+      <li>
+        <span class="spec step-no">02</span>
+        <h3>Put it where your agent looks</h3>
+        <p>Claude Code: <code>.claude/skills/uinimate/SKILL.md</code>. Other tools: add it to your rules or <code>AGENTS.md</code>.</p>
+      </li>
+      <li>
+        <span class="spec step-no">03</span>
+        <h3>Just ask</h3>
+        <p>"Add an animated burger menu to the header", "a dark-mode toggle that matches our colours", "turn the FAQ into an accordion".</p>
+      </li>
+    </ol>
+
+    <div class="skill">
+      <div class="skill-bar">
+        <span class="spec">skills/uinimate/SKILL.md</span>
+        <a class="spec" href={folder}>View on GitHub →</a>
+      </div>
+      <article class="prose">
+        <Skill />
+      </article>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page { padding-block: 72px 0; display: flex; flex-direction: column; gap: 40px; }
+  .head { display: flex; flex-direction: column; gap: 14px; }
+  .h1 { font-size: clamp(44px, 6vw, 80px); }
+  .lede { font-size: 18px; color: var(--muted); }
+  code { font: 0.9em var(--mono); }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); border: 1.5px solid var(--fg); }
+  .steps li { padding: 22px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; }
+  .steps li:last-child { border-right: 0; }
+  .steps h3 { margin: 0; font: 500 24px/1.15 var(--display); }
+  .steps p { color: var(--muted); font-size: 15px; }
+  .step-no { color: var(--muted); }
+
+  .skill { border: 1.5px solid var(--fg); }
+  .skill-bar { display: flex; justify-content: space-between; gap: 12px; padding: 12px 18px; border-bottom: 1.5px solid var(--fg); background: var(--surface); color: var(--muted); }
+  .skill-bar a { color: var(--fg); }
+  .prose { padding: 8px 28px 32px; max-width: 900px; }
+  .prose :global(h1) { display: none; } /* the page has its own title */
+  .prose :global(h2) { font: 500 32px/1.15 var(--display); margin: 40px 0 12px; }
+  .prose :global(h3) { font: 500 22px/1.2 var(--display); margin: 28px 0 8px; }
+  .prose :global(p), .prose :global(li) { color: var(--fg); font-size: 15.5px; line-height: 1.65; max-width: 72ch; }
+  .prose :global(p) { margin: 10px 0; }
+  .prose :global(ul), .prose :global(ol) { padding-left: 20px; }
+  .prose :global(a) { color: var(--accent); }
+  .prose :global(code) { font: 0.88em var(--mono); background: var(--surface); padding: 1px 5px; }
+  .prose :global(pre) { margin: 12px 0; padding: 16px 18px; overflow-x: auto; background: var(--surface) !important; border: 1px solid var(--line); }
+  .prose :global(pre code) { background: none; padding: 0; font-size: 12.5px; line-height: 1.6; }
+  .prose :global(table) { border-collapse: collapse; width: 100%; font-size: 14px; margin: 14px 0; display: block; overflow-x: auto; }
+  .prose :global(th), .prose :global(td) { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose :global(th) { font: 11px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+
+  @media (max-width: 820px) {
+    .steps { grid-auto-flow: row; }
+    .steps li { border-right: 0; border-bottom: 1px solid var(--line); }
+    .prose { padding-inline: 18px; }
+  }
+</style>
